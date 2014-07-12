@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46710EAE197166840024CECD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EAD197166840024CECD /* main.m */; };
+		46710EB1197166840024CECD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EB0197166840024CECD /* AppDelegate.m */; };
+		46710EB3197166840024CECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46710EB2197166840024CECD /* Images.xcassets */; };
+		46710EBF197166840024CECD /* Best_BitesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EBE197166840024CECD /* Best_BitesTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46710EB9197166840024CECD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46710EA0197166840024CECD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46710EA7197166840024CECD;
+			remoteInfo = "Best Bites";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		46710EA8197166840024CECD /* Best Bites.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Best Bites.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46710EAC197166840024CECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46710EAD197166840024CECD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		46710EAF197166840024CECD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		46710EB0197166840024CECD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		46710EB2197166840024CECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		46710EB8197166840024CECD /* Best BitesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Best BitesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46710EBD197166840024CECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46710EBE197166840024CECD /* Best_BitesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Best_BitesTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46710EA5197166840024CECD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46710EB5197166840024CECD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46710E9F197166840024CECD = {
+			isa = PBXGroup;
+			children = (
+				46710EAA197166840024CECD /* Best Bites */,
+				46710EBB197166840024CECD /* Best BitesTests */,
+				46710EA9197166840024CECD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		46710EA9197166840024CECD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46710EA8197166840024CECD /* Best Bites.app */,
+				46710EB8197166840024CECD /* Best BitesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46710EAA197166840024CECD /* Best Bites */ = {
+			isa = PBXGroup;
+			children = (
+				46710EAF197166840024CECD /* AppDelegate.h */,
+				46710EB0197166840024CECD /* AppDelegate.m */,
+				46710EB2197166840024CECD /* Images.xcassets */,
+				46710EAB197166840024CECD /* Supporting Files */,
+			);
+			path = "Best Bites";
+			sourceTree = "<group>";
+		};
+		46710EAB197166840024CECD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46710EAC197166840024CECD /* Info.plist */,
+				46710EAD197166840024CECD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46710EBB197166840024CECD /* Best BitesTests */ = {
+			isa = PBXGroup;
+			children = (
+				46710EBE197166840024CECD /* Best_BitesTests.m */,
+				46710EBC197166840024CECD /* Supporting Files */,
+			);
+			path = "Best BitesTests";
+			sourceTree = "<group>";
+		};
+		46710EBC197166840024CECD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46710EBD197166840024CECD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46710EA7197166840024CECD /* Best Bites */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46710EC2197166840024CECD /* Build configuration list for PBXNativeTarget "Best Bites" */;
+			buildPhases = (
+				46710EA4197166840024CECD /* Sources */,
+				46710EA5197166840024CECD /* Frameworks */,
+				46710EA6197166840024CECD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Best Bites";
+			productName = "Best Bites";
+			productReference = 46710EA8197166840024CECD /* Best Bites.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46710EB7197166840024CECD /* Best BitesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46710EC5197166840024CECD /* Build configuration list for PBXNativeTarget "Best BitesTests" */;
+			buildPhases = (
+				46710EB4197166840024CECD /* Sources */,
+				46710EB5197166840024CECD /* Frameworks */,
+				46710EB6197166840024CECD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46710EBA197166840024CECD /* PBXTargetDependency */,
+			);
+			name = "Best BitesTests";
+			productName = "Best BitesTests";
+			productReference = 46710EB8197166840024CECD /* Best BitesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46710EA0197166840024CECD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Best Bites";
+				TargetAttributes = {
+					46710EA7197166840024CECD = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					46710EB7197166840024CECD = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 46710EA7197166840024CECD;
+					};
+				};
+			};
+			buildConfigurationList = 46710EA3197166840024CECD /* Build configuration list for PBXProject "Best Bites" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 46710E9F197166840024CECD;
+			productRefGroup = 46710EA9197166840024CECD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46710EA7197166840024CECD /* Best Bites */,
+				46710EB7197166840024CECD /* Best BitesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46710EA6197166840024CECD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46710EB3197166840024CECD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46710EB6197166840024CECD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46710EA4197166840024CECD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46710EB1197166840024CECD /* AppDelegate.m in Sources */,
+				46710EAE197166840024CECD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46710EB4197166840024CECD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46710EBF197166840024CECD /* Best_BitesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46710EBA197166840024CECD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46710EA7197166840024CECD /* Best Bites */;
+			targetProxy = 46710EB9197166840024CECD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		46710EC0197166840024CECD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		46710EC1197166840024CECD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		46710EC3197166840024CECD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Best Bites/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		46710EC4197166840024CECD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "Best Bites/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		46710EC6197166840024CECD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Best Bites.app/Best Bites";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Best BitesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		46710EC7197166840024CECD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Best Bites.app/Best Bites";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Best BitesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46710EA3197166840024CECD /* Build configuration list for PBXProject "Best Bites" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46710EC0197166840024CECD /* Debug */,
+				46710EC1197166840024CECD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46710EC2197166840024CECD /* Build configuration list for PBXNativeTarget "Best Bites" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46710EC3197166840024CECD /* Debug */,
+				46710EC4197166840024CECD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46710EC5197166840024CECD /* Build configuration list for PBXNativeTarget "Best BitesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46710EC6197166840024CECD /* Debug */,
+				46710EC7197166840024CECD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46710EA0197166840024CECD /* Project object */;
+}
