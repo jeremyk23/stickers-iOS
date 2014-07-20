@@ -11,6 +11,55 @@
 		46710EB1197166840024CECD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EB0197166840024CECD /* AppDelegate.m */; };
 		46710EB3197166840024CECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46710EB2197166840024CECD /* Images.xcassets */; };
 		46710EBF197166840024CECD /* Best_BitesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EBE197166840024CECD /* Best_BitesTests.m */; };
+		46710EC9197167110024CECD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710EC8197167110024CECD /* MapKit.framework */; };
+		46710ECE197167300024CECD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ECA197167300024CECD /* AudioToolbox.framework */; };
+		46710ECF197167300024CECD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ECB197167300024CECD /* CFNetwork.framework */; };
+		46710ED0197167300024CECD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ECC197167300024CECD /* CoreGraphics.framework */; };
+		46710ED1197167300024CECD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ECD197167300024CECD /* CoreLocation.framework */; };
+		46710ED8197167620024CECD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ED2197167620024CECD /* Foundation.framework */; };
+		46710ED9197167620024CECD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ED3197167620024CECD /* MobileCoreServices.framework */; };
+		46710EDA197167620024CECD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ED4197167620024CECD /* QuartzCore.framework */; };
+		46710EDB197167620024CECD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ED5197167620024CECD /* Security.framework */; };
+		46710EDC197167620024CECD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ED6197167620024CECD /* SystemConfiguration.framework */; };
+		46710EDD197167620024CECD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710ED7197167620024CECD /* UIKit.framework */; };
+		46710EDF1971676A0024CECD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710EDE1971676A0024CECD /* libz.dylib */; };
+		46710EE1197168720024CECD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46710EE0197168720024CECD /* Parse.framework */; };
+		46710EE4197169570024CECD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EE3197169570024CECD /* HomeViewController.m */; };
+		46710EEA19716ED20024CECD /* FrontPageRestaurantsQTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EE919716ED20024CECD /* FrontPageRestaurantsQTVC.m */; };
+		46710EED19716F7E0024CECD /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EEC19716F7E0024CECD /* Constants.m */; };
+		46710EF0197170740024CECD /* ParseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EEF197170740024CECD /* ParseUtils.m */; };
+		46710EF4197171490024CECD /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EF3197171490024CECD /* Singleton.m */; };
+		46710EF8197171D40024CECD /* BBLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EF7197171D40024CECD /* BBLabel.m */; };
+		46710F07197172070024CECD /* ERequestInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EFA197172070024CECD /* ERequestInterface.m */; };
+		46710F08197172070024CECD /* JKLocu.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EFC197172070024CECD /* JKLocu.m */; };
+		46710F09197172070024CECD /* JKLocuRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EFE197172070024CECD /* JKLocuRequest.m */; };
+		46710F0A197172070024CECD /* BZFoursquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F00197172070024CECD /* BZFoursquare.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		46710F0B197172070024CECD /* BZFoursquareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F02197172070024CECD /* BZFoursquareRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		46710F0C197172070024CECD /* EFoursquareParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F04197172070024CECD /* EFoursquareParser.m */; };
+		46710F0D197172070024CECD /* ELocuParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F06197172070024CECD /* ELocuParser.m */; };
+		46710F25197185620024CECD /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F14197185620024CECD /* Menu.m */; };
+		46710F26197185620024CECD /* Menu_MenuType.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F16197185620024CECD /* Menu_MenuType.m */; };
+		46710F27197185620024CECD /* Menu_SectionTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F18197185620024CECD /* Menu_SectionTitle.m */; };
+		46710F28197185620024CECD /* Menu_SectionDescr.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F1A197185620024CECD /* Menu_SectionDescr.m */; };
+		46710F29197185620024CECD /* Menu_Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F1C197185620024CECD /* Menu_Dish.m */; };
+		46710F2A197185620024CECD /* Menu_DishWithDescr.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F1E197185620024CECD /* Menu_DishWithDescr.m */; };
+		46710F2B197185620024CECD /* RestaurantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F20197185620024CECD /* RestaurantModel.m */; };
+		46710F2C197185620024CECD /* ParseRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F22197185620024CECD /* ParseRestaurant.m */; };
+		46710F2D197185620024CECD /* FoursquareRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F24197185620024CECD /* FoursquareRestaurant.m */; };
+		46710F391971877B0024CECD /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F371971877B0024CECD /* RestaurantViewController.m */; };
+		46710F3A1971877B0024CECD /* RestaurantViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46710F381971877B0024CECD /* RestaurantViewController.xib */; };
+		46710F3E197187880024CECD /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F3C197187880024CECD /* MenuViewController.m */; };
+		46710F3F197187880024CECD /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46710F3D197187880024CECD /* MenuViewController.xib */; };
+		46710F42197187970024CECD /* MenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F41197187970024CECD /* MenuItemTableViewCell.m */; };
+		46710F45197187C90024CECD /* RestaurantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F44197187C90024CECD /* RestaurantTableViewCell.m */; };
+		46710F4A1971883F0024CECD /* gradient_parse2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46710F491971883F0024CECD /* gradient_parse2.png */; };
+		46710F5619718AD20024CECD /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F4E19718AD20024CECD /* ALView+PureLayout.m */; };
+		46710F5719718AD20024CECD /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F5019718AD20024CECD /* NSArray+PureLayout.m */; };
+		46710F5819718AD20024CECD /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F5219718AD20024CECD /* NSLayoutConstraint+PureLayout.m */; };
+		46AF798A197AB34000730F91 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF7988197AB34000730F91 /* SearchViewController.m */; };
+		46AF798B197AB34000730F91 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AF7989197AB34000730F91 /* SearchViewController.xib */; };
+		46AF7999197B536100730F91 /* FoursquareRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF7998197B536100730F91 /* FoursquareRestaurantViewController.m */; };
+		46AF79A0197BF87600730F91 /* FoursquareRestaurantTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF799F197BF87600730F91 /* FoursquareRestaurantTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +82,91 @@
 		46710EB8197166840024CECD /* Best BitesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Best BitesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46710EBD197166840024CECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46710EBE197166840024CECD /* Best_BitesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Best_BitesTests.m; sourceTree = "<group>"; };
+		46710EC8197167110024CECD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		46710ECA197167300024CECD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		46710ECB197167300024CECD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		46710ECC197167300024CECD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		46710ECD197167300024CECD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		46710ED2197167620024CECD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		46710ED3197167620024CECD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		46710ED4197167620024CECD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		46710ED5197167620024CECD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		46710ED6197167620024CECD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		46710ED7197167620024CECD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		46710EDE1971676A0024CECD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		46710EE0197168720024CECD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		46710EE2197169570024CECD /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = "Best Bites/HomeViewController.h"; sourceTree = "<group>"; };
+		46710EE3197169570024CECD /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = "Best Bites/HomeViewController.m"; sourceTree = "<group>"; };
+		46710EE819716ED20024CECD /* FrontPageRestaurantsQTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageRestaurantsQTVC.h; sourceTree = "<group>"; };
+		46710EE919716ED20024CECD /* FrontPageRestaurantsQTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageRestaurantsQTVC.m; sourceTree = "<group>"; };
+		46710EEB19716F7E0024CECD /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		46710EEC19716F7E0024CECD /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		46710EEE197170740024CECD /* ParseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseUtils.h; sourceTree = "<group>"; };
+		46710EEF197170740024CECD /* ParseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseUtils.m; sourceTree = "<group>"; };
+		46710EF2197171490024CECD /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		46710EF3197171490024CECD /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
+		46710EF6197171D40024CECD /* BBLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLabel.h; sourceTree = "<group>"; };
+		46710EF7197171D40024CECD /* BBLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLabel.m; sourceTree = "<group>"; };
+		46710EF9197172070024CECD /* ERequestInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ERequestInterface.h; sourceTree = "<group>"; };
+		46710EFA197172070024CECD /* ERequestInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ERequestInterface.m; sourceTree = "<group>"; };
+		46710EFB197172070024CECD /* JKLocu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLocu.h; sourceTree = "<group>"; };
+		46710EFC197172070024CECD /* JKLocu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLocu.m; sourceTree = "<group>"; };
+		46710EFD197172070024CECD /* JKLocuRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKLocuRequest.h; sourceTree = "<group>"; };
+		46710EFE197172070024CECD /* JKLocuRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKLocuRequest.m; sourceTree = "<group>"; };
+		46710EFF197172070024CECD /* BZFoursquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFoursquare.h; sourceTree = "<group>"; };
+		46710F00197172070024CECD /* BZFoursquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFoursquare.m; sourceTree = "<group>"; };
+		46710F01197172070024CECD /* BZFoursquareRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZFoursquareRequest.h; sourceTree = "<group>"; };
+		46710F02197172070024CECD /* BZFoursquareRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZFoursquareRequest.m; sourceTree = "<group>"; };
+		46710F03197172070024CECD /* EFoursquareParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFoursquareParser.h; sourceTree = "<group>"; };
+		46710F04197172070024CECD /* EFoursquareParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFoursquareParser.m; sourceTree = "<group>"; };
+		46710F05197172070024CECD /* ELocuParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELocuParser.h; sourceTree = "<group>"; };
+		46710F06197172070024CECD /* ELocuParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELocuParser.m; sourceTree = "<group>"; };
+		46710F13197185620024CECD /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		46710F14197185620024CECD /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
+		46710F15197185620024CECD /* Menu_MenuType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu_MenuType.h; sourceTree = "<group>"; };
+		46710F16197185620024CECD /* Menu_MenuType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu_MenuType.m; sourceTree = "<group>"; };
+		46710F17197185620024CECD /* Menu_SectionTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu_SectionTitle.h; sourceTree = "<group>"; };
+		46710F18197185620024CECD /* Menu_SectionTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu_SectionTitle.m; sourceTree = "<group>"; };
+		46710F19197185620024CECD /* Menu_SectionDescr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu_SectionDescr.h; sourceTree = "<group>"; };
+		46710F1A197185620024CECD /* Menu_SectionDescr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu_SectionDescr.m; sourceTree = "<group>"; };
+		46710F1B197185620024CECD /* Menu_Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu_Dish.h; sourceTree = "<group>"; };
+		46710F1C197185620024CECD /* Menu_Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu_Dish.m; sourceTree = "<group>"; };
+		46710F1D197185620024CECD /* Menu_DishWithDescr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu_DishWithDescr.h; sourceTree = "<group>"; };
+		46710F1E197185620024CECD /* Menu_DishWithDescr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu_DishWithDescr.m; sourceTree = "<group>"; };
+		46710F1F197185620024CECD /* RestaurantModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantModel.h; sourceTree = "<group>"; };
+		46710F20197185620024CECD /* RestaurantModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantModel.m; sourceTree = "<group>"; };
+		46710F21197185620024CECD /* ParseRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseRestaurant.h; sourceTree = "<group>"; };
+		46710F22197185620024CECD /* ParseRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseRestaurant.m; sourceTree = "<group>"; };
+		46710F23197185620024CECD /* FoursquareRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareRestaurant.h; sourceTree = "<group>"; };
+		46710F24197185620024CECD /* FoursquareRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareRestaurant.m; sourceTree = "<group>"; };
+		46710F361971877B0024CECD /* RestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantViewController.h; sourceTree = "<group>"; };
+		46710F371971877B0024CECD /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
+		46710F381971877B0024CECD /* RestaurantViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantViewController.xib; sourceTree = "<group>"; };
+		46710F3B197187880024CECD /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		46710F3C197187880024CECD /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		46710F3D197187880024CECD /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		46710F40197187970024CECD /* MenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemTableViewCell.h; sourceTree = "<group>"; };
+		46710F41197187970024CECD /* MenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemTableViewCell.m; sourceTree = "<group>"; };
+		46710F43197187C90024CECD /* RestaurantTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewCell.h; sourceTree = "<group>"; };
+		46710F44197187C90024CECD /* RestaurantTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewCell.m; sourceTree = "<group>"; };
+		46710F491971883F0024CECD /* gradient_parse2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gradient_parse2.png; path = ../gradient_parse2.png; sourceTree = "<group>"; };
+		46710F4D19718AD20024CECD /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
+		46710F4E19718AD20024CECD /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
+		46710F4F19718AD20024CECD /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		46710F5019718AD20024CECD /* NSArray+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		46710F5119718AD20024CECD /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		46710F5219718AD20024CECD /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		46710F5319718AD20024CECD /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
+		46710F5419718AD20024CECD /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
+		46710F5519718AD20024CECD /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
+		46710F5B19718C940024CECD /* BestBites-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BestBites-PrefixHeader.pch"; path = "../BestBites-PrefixHeader.pch"; sourceTree = "<group>"; };
+		46AF7987197AB34000730F91 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		46AF7988197AB34000730F91 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		46AF7989197AB34000730F91 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		46AF7997197B536100730F91 /* FoursquareRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareRestaurantViewController.h; sourceTree = "<group>"; };
+		46AF7998197B536100730F91 /* FoursquareRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareRestaurantViewController.m; sourceTree = "<group>"; };
+		46AF799E197BF87600730F91 /* FoursquareRestaurantTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareRestaurantTableView.h; sourceTree = "<group>"; };
+		46AF799F197BF87600730F91 /* FoursquareRestaurantTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareRestaurantTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +174,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46710EDF1971676A0024CECD /* libz.dylib in Frameworks */,
+				46710ED8197167620024CECD /* Foundation.framework in Frameworks */,
+				46710ED9197167620024CECD /* MobileCoreServices.framework in Frameworks */,
+				46710EDA197167620024CECD /* QuartzCore.framework in Frameworks */,
+				46710EDB197167620024CECD /* Security.framework in Frameworks */,
+				46710EDC197167620024CECD /* SystemConfiguration.framework in Frameworks */,
+				46710EE1197168720024CECD /* Parse.framework in Frameworks */,
+				46710EDD197167620024CECD /* UIKit.framework in Frameworks */,
+				46710ECE197167300024CECD /* AudioToolbox.framework in Frameworks */,
+				46710ECF197167300024CECD /* CFNetwork.framework in Frameworks */,
+				46710ED0197167300024CECD /* CoreGraphics.framework in Frameworks */,
+				46710ED1197167300024CECD /* CoreLocation.framework in Frameworks */,
+				46710EC9197167110024CECD /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +203,7 @@
 		46710E9F197166840024CECD = {
 			isa = PBXGroup;
 			children = (
+				46710F5A19718AE30024CECD /* Libraries And Frameworks */,
 				46710EAA197166840024CECD /* Best Bites */,
 				46710EBB197166840024CECD /* Best BitesTests */,
 				46710EA9197166840024CECD /* Products */,
@@ -76,6 +224,10 @@
 			children = (
 				46710EAF197166840024CECD /* AppDelegate.h */,
 				46710EB0197166840024CECD /* AppDelegate.m */,
+				46710F32197186920024CECD /* ViewControllers */,
+				46710F2E1971856C0024CECD /* Models */,
+				46710F12197184F20024CECD /* APIStuff */,
+				46710EF1197171320024CECD /* Globals */,
 				46710EB2197166840024CECD /* Images.xcassets */,
 				46710EAB197166840024CECD /* Supporting Files */,
 			);
@@ -85,7 +237,9 @@
 		46710EAB197166840024CECD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				46710F4B1971884F0024CECD /* Images */,
 				46710EAC197166840024CECD /* Info.plist */,
+				46710F5B19718C940024CECD /* BestBites-PrefixHeader.pch */,
 				46710EAD197166840024CECD /* main.m */,
 			);
 			name = "Supporting Files";
@@ -106,6 +260,256 @@
 				46710EBD197166840024CECD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46710EF1197171320024CECD /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				46710EF5197171C00024CECD /* CustomUI */,
+				46710EEB19716F7E0024CECD /* Constants.h */,
+				46710EEC19716F7E0024CECD /* Constants.m */,
+				46710EEE197170740024CECD /* ParseUtils.h */,
+				46710EEF197170740024CECD /* ParseUtils.m */,
+				46710EF2197171490024CECD /* Singleton.h */,
+				46710EF3197171490024CECD /* Singleton.m */,
+			);
+			name = Globals;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		46710EF5197171C00024CECD /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				46710EF6197171D40024CECD /* BBLabel.h */,
+				46710EF7197171D40024CECD /* BBLabel.m */,
+			);
+			name = CustomUI;
+			sourceTree = "<group>";
+		};
+		46710F0E1971720F0024CECD /* RequestInterface */ = {
+			isa = PBXGroup;
+			children = (
+				46710EF9197172070024CECD /* ERequestInterface.h */,
+				46710EFA197172070024CECD /* ERequestInterface.m */,
+			);
+			name = RequestInterface;
+			sourceTree = "<group>";
+		};
+		46710F0F1971721D0024CECD /* JKLocu */ = {
+			isa = PBXGroup;
+			children = (
+				46710EFB197172070024CECD /* JKLocu.h */,
+				46710EFC197172070024CECD /* JKLocu.m */,
+				46710EFD197172070024CECD /* JKLocuRequest.h */,
+				46710EFE197172070024CECD /* JKLocuRequest.m */,
+			);
+			name = JKLocu;
+			sourceTree = "<group>";
+		};
+		46710F10197184D50024CECD /* BZFoursquare */ = {
+			isa = PBXGroup;
+			children = (
+				46710EFF197172070024CECD /* BZFoursquare.h */,
+				46710F00197172070024CECD /* BZFoursquare.m */,
+				46710F01197172070024CECD /* BZFoursquareRequest.h */,
+				46710F02197172070024CECD /* BZFoursquareRequest.m */,
+			);
+			name = BZFoursquare;
+			sourceTree = "<group>";
+		};
+		46710F11197184DF0024CECD /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				46710F03197172070024CECD /* EFoursquareParser.h */,
+				46710F04197172070024CECD /* EFoursquareParser.m */,
+				46710F05197172070024CECD /* ELocuParser.h */,
+				46710F06197172070024CECD /* ELocuParser.m */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
+		46710F12197184F20024CECD /* APIStuff */ = {
+			isa = PBXGroup;
+			children = (
+				46710F0E1971720F0024CECD /* RequestInterface */,
+				46710F0F1971721D0024CECD /* JKLocu */,
+				46710F10197184D50024CECD /* BZFoursquare */,
+				46710F11197184DF0024CECD /* Parsers */,
+			);
+			name = APIStuff;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		46710F2E1971856C0024CECD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				46710F31197185BB0024CECD /* MenuModel */,
+				46710F30197185AB0024CECD /* RestaurantModels */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		46710F2F197185910024CECD /* MenuTypes */ = {
+			isa = PBXGroup;
+			children = (
+				46710F15197185620024CECD /* Menu_MenuType.h */,
+				46710F16197185620024CECD /* Menu_MenuType.m */,
+				46710F17197185620024CECD /* Menu_SectionTitle.h */,
+				46710F18197185620024CECD /* Menu_SectionTitle.m */,
+				46710F19197185620024CECD /* Menu_SectionDescr.h */,
+				46710F1A197185620024CECD /* Menu_SectionDescr.m */,
+				46710F1B197185620024CECD /* Menu_Dish.h */,
+				46710F1C197185620024CECD /* Menu_Dish.m */,
+				46710F1D197185620024CECD /* Menu_DishWithDescr.h */,
+				46710F1E197185620024CECD /* Menu_DishWithDescr.m */,
+			);
+			name = MenuTypes;
+			sourceTree = "<group>";
+		};
+		46710F30197185AB0024CECD /* RestaurantModels */ = {
+			isa = PBXGroup;
+			children = (
+				46710F1F197185620024CECD /* RestaurantModel.h */,
+				46710F20197185620024CECD /* RestaurantModel.m */,
+				46710F21197185620024CECD /* ParseRestaurant.h */,
+				46710F22197185620024CECD /* ParseRestaurant.m */,
+				46710F23197185620024CECD /* FoursquareRestaurant.h */,
+				46710F24197185620024CECD /* FoursquareRestaurant.m */,
+			);
+			name = RestaurantModels;
+			sourceTree = "<group>";
+		};
+		46710F31197185BB0024CECD /* MenuModel */ = {
+			isa = PBXGroup;
+			children = (
+				46710F13197185620024CECD /* Menu.h */,
+				46710F14197185620024CECD /* Menu.m */,
+				46710F2F197185910024CECD /* MenuTypes */,
+			);
+			name = MenuModel;
+			sourceTree = "<group>";
+		};
+		46710F32197186920024CECD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				46AF798F197B07CA00730F91 /* Search */,
+				46710F4C1971885B0024CECD /* Home */,
+				46710F46197187D20024CECD /* FrontPage */,
+				46710F47197187E20024CECD /* Restaurant */,
+				46710F48197187F10024CECD /* Menu */,
+			);
+			name = ViewControllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		46710F46197187D20024CECD /* FrontPage */ = {
+			isa = PBXGroup;
+			children = (
+				46710EE819716ED20024CECD /* FrontPageRestaurantsQTVC.h */,
+				46710EE919716ED20024CECD /* FrontPageRestaurantsQTVC.m */,
+				46710F43197187C90024CECD /* RestaurantTableViewCell.h */,
+				46710F44197187C90024CECD /* RestaurantTableViewCell.m */,
+			);
+			name = FrontPage;
+			sourceTree = "<group>";
+		};
+		46710F47197187E20024CECD /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				46710F361971877B0024CECD /* RestaurantViewController.h */,
+				46710F371971877B0024CECD /* RestaurantViewController.m */,
+				46710F381971877B0024CECD /* RestaurantViewController.xib */,
+				46AF799D197BF7B800730F91 /* Foursquare Restaurant */,
+			);
+			name = Restaurant;
+			sourceTree = "<group>";
+		};
+		46710F48197187F10024CECD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				46710F3B197187880024CECD /* MenuViewController.h */,
+				46710F3C197187880024CECD /* MenuViewController.m */,
+				46710F3D197187880024CECD /* MenuViewController.xib */,
+				46710F40197187970024CECD /* MenuItemTableViewCell.h */,
+				46710F41197187970024CECD /* MenuItemTableViewCell.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		46710F4B1971884F0024CECD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				46710F491971883F0024CECD /* gradient_parse2.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		46710F4C1971885B0024CECD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				46710EE2197169570024CECD /* HomeViewController.h */,
+				46710EE3197169570024CECD /* HomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		46710F5919718AD80024CECD /* PureLayout */ = {
+			isa = PBXGroup;
+			children = (
+				46710F4D19718AD20024CECD /* ALView+PureLayout.h */,
+				46710F4E19718AD20024CECD /* ALView+PureLayout.m */,
+				46710F4F19718AD20024CECD /* NSArray+PureLayout.h */,
+				46710F5019718AD20024CECD /* NSArray+PureLayout.m */,
+				46710F5119718AD20024CECD /* NSLayoutConstraint+PureLayout.h */,
+				46710F5219718AD20024CECD /* NSLayoutConstraint+PureLayout.m */,
+				46710F5319718AD20024CECD /* PureLayout+Internal.h */,
+				46710F5419718AD20024CECD /* PureLayout.h */,
+				46710F5519718AD20024CECD /* PureLayoutDefines.h */,
+			);
+			name = PureLayout;
+			sourceTree = "<group>";
+		};
+		46710F5A19718AE30024CECD /* Libraries And Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46710F5919718AD80024CECD /* PureLayout */,
+				46710EE0197168720024CECD /* Parse.framework */,
+				46710EDE1971676A0024CECD /* libz.dylib */,
+				46710ED2197167620024CECD /* Foundation.framework */,
+				46710ED3197167620024CECD /* MobileCoreServices.framework */,
+				46710ED4197167620024CECD /* QuartzCore.framework */,
+				46710ED5197167620024CECD /* Security.framework */,
+				46710ED6197167620024CECD /* SystemConfiguration.framework */,
+				46710ED7197167620024CECD /* UIKit.framework */,
+				46710ECA197167300024CECD /* AudioToolbox.framework */,
+				46710ECB197167300024CECD /* CFNetwork.framework */,
+				46710ECC197167300024CECD /* CoreGraphics.framework */,
+				46710ECD197167300024CECD /* CoreLocation.framework */,
+				46710EC8197167110024CECD /* MapKit.framework */,
+			);
+			name = "Libraries And Frameworks";
+			sourceTree = "<group>";
+		};
+		46AF798F197B07CA00730F91 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				46AF7987197AB34000730F91 /* SearchViewController.h */,
+				46AF7988197AB34000730F91 /* SearchViewController.m */,
+				46AF7989197AB34000730F91 /* SearchViewController.xib */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		46AF799D197BF7B800730F91 /* Foursquare Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				46AF7997197B536100730F91 /* FoursquareRestaurantViewController.h */,
+				46AF7998197B536100730F91 /* FoursquareRestaurantViewController.m */,
+				46AF799E197BF87600730F91 /* FoursquareRestaurantTableView.h */,
+				46AF799F197BF87600730F91 /* FoursquareRestaurantTableView.m */,
+			);
+			name = "Foursquare Restaurant";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +561,7 @@
 				TargetAttributes = {
 					46710EA7197166840024CECD = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 9JD849925C;
 					};
 					46710EB7197166840024CECD = {
 						CreatedOnToolsVersion = 6.0;
@@ -187,7 +592,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46710F4A1971883F0024CECD /* gradient_parse2.png in Resources */,
 				46710EB3197166840024CECD /* Images.xcassets in Resources */,
+				46710F3F197187880024CECD /* MenuViewController.xib in Resources */,
+				46AF798B197AB34000730F91 /* SearchViewController.xib in Resources */,
+				46710F3A1971877B0024CECD /* RestaurantViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,8 +614,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46710F0B197172070024CECD /* BZFoursquareRequest.m in Sources */,
+				46710F2C197185620024CECD /* ParseRestaurant.m in Sources */,
+				46710EF8197171D40024CECD /* BBLabel.m in Sources */,
+				46710F2B197185620024CECD /* RestaurantModel.m in Sources */,
+				46710F5719718AD20024CECD /* NSArray+PureLayout.m in Sources */,
+				46710F28197185620024CECD /* Menu_SectionDescr.m in Sources */,
+				46AF798A197AB34000730F91 /* SearchViewController.m in Sources */,
+				46710F08197172070024CECD /* JKLocu.m in Sources */,
+				46710F26197185620024CECD /* Menu_MenuType.m in Sources */,
+				46AF79A0197BF87600730F91 /* FoursquareRestaurantTableView.m in Sources */,
+				46710EED19716F7E0024CECD /* Constants.m in Sources */,
+				46710F2A197185620024CECD /* Menu_DishWithDescr.m in Sources */,
+				46710EF0197170740024CECD /* ParseUtils.m in Sources */,
 				46710EB1197166840024CECD /* AppDelegate.m in Sources */,
+				46710F27197185620024CECD /* Menu_SectionTitle.m in Sources */,
+				46710F07197172070024CECD /* ERequestInterface.m in Sources */,
+				46710F0C197172070024CECD /* EFoursquareParser.m in Sources */,
+				46710EEA19716ED20024CECD /* FrontPageRestaurantsQTVC.m in Sources */,
+				46710F2D197185620024CECD /* FoursquareRestaurant.m in Sources */,
+				46710F45197187C90024CECD /* RestaurantTableViewCell.m in Sources */,
+				46710F5819718AD20024CECD /* NSLayoutConstraint+PureLayout.m in Sources */,
+				46710F29197185620024CECD /* Menu_Dish.m in Sources */,
+				46710F3E197187880024CECD /* MenuViewController.m in Sources */,
+				46710EF4197171490024CECD /* Singleton.m in Sources */,
+				46710F0D197172070024CECD /* ELocuParser.m in Sources */,
+				46710F09197172070024CECD /* JKLocuRequest.m in Sources */,
+				46710F25197185620024CECD /* Menu.m in Sources */,
+				46710F42197187970024CECD /* MenuItemTableViewCell.m in Sources */,
+				46AF7999197B536100730F91 /* FoursquareRestaurantViewController.m in Sources */,
 				46710EAE197166840024CECD /* main.m in Sources */,
+				46710F0A197172070024CECD /* BZFoursquare.m in Sources */,
+				46710F5619718AD20024CECD /* ALView+PureLayout.m in Sources */,
+				46710EE4197169570024CECD /* HomeViewController.m in Sources */,
+				46710F391971877B0024CECD /* RestaurantViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,9 +751,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREFIX_HEADER = "BestBites-PrefixHeader.pch";
 				INFOPLIST_FILE = "Best Bites/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -321,9 +770,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeremy Klein (9JD849925C)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREFIX_HEADER = "BestBites-PrefixHeader.pch";
 				INFOPLIST_FILE = "Best Bites/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -382,6 +839,7 @@
 				46710EC4197166840024CECD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46710EC5197166840024CECD /* Build configuration list for PBXNativeTarget "Best BitesTests" */ = {
 			isa = XCConfigurationList;
@@ -390,6 +848,7 @@
 				46710EC7197166840024CECD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

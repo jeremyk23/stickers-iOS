@@ -1,0 +1,299 @@
+//
+//  RestaurantViewController.m
+//  Entree
+//
+//  Created by Jeremy Klein Sr on 7/4/14.
+//  Copyright (c) 2014 Entree. All rights reserved.
+//
+
+#import "RestaurantViewController.h"
+#import "BBLabel.h"
+#import <Parse/Parse.h>
+#import "ERequestInterface.h"
+#import "EFoursquareParser.h"
+#import "Menu.h"
+#import "MenuViewController.h"
+@interface RestaurantViewController ()
+@property (nonatomic, strong) NSArray *topDishes;
+@property (nonatomic, strong) NSArray *awards;
+@property (nonatomic, strong) NSArray *reviews;
+
+@property (nonatomic) int numberOfSections;
+@property (nonatomic) int menuSection;
+@property (nonatomic) int awardsSection;
+@property (nonatomic) int reviewsSection;
+
+@end
+
+@implementation RestaurantViewController
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andPFObject:(PFObject *)restaurant {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.restaurant = restaurant;
+        self.request = [[ERequestInterface alloc] init];
+        self.request.eDelegate = self;
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.request = [[ERequestInterface alloc] init];
+        self.request.eDelegate = self;
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    //in the case that a subclass with no restaurant calls this method, check to make sure restaurant exists
+    if (self.restaurant) {
+        self.restaurantPhoto.file = self.restaurant[@"restaurantPhoto"];
+        [self.restaurantPhoto loadInBackground];
+        self.restaurantNameLabel.text = self.restaurant[@"restaurantName"];
+        self.restaurantNameLabel.textColor = [UIColor blackColor];
+        self.addressLabel.text = self.restaurant[@"address"];
+        [self.view bringSubviewToFront:self.restaurantNameLabel];
+        [self detailedRestaurantQuery];
+    }
+}
+
+- (void)detailedRestaurantQuery {
+    PFQuery *detailQuery = [PFQuery queryWithClassName:@"Restaurant"];
+    [detailQuery includeKey:@"topDishes"];
+    [detailQuery includeKey:@"awards"];
+    [detailQuery includeKey:@"reviews"];
+    [detailQuery getObjectInBackgroundWithId:self.restaurant.objectId block:^(PFObject *detailedRestaurant, NSError *error) {
+        if (!error) {
+            int sectionCount = 1;
+            if ([detailedRestaurant[@"topDishes"] count] != 0) {
+                self.topDishes = [NSArray arrayWithArray:detailedRestaurant[@"topDishes"]];
+                self.menuSection = sectionCount;
+                sectionCount += 1;
+            }
+            
+            if ([detailedRestaurant[@"awards"] count] != 0) {
+                self.awards = [NSArray arrayWithArray:detailedRestaurant[@"awards"]];
+                self.awardsSection = sectionCount;
+                sectionCount += 1;
+            }
+            
+            if ([detailedRestaurant[@"reviews"] count] != 0) {
+                self.reviews = [NSArray arrayWithArray:detailedRestaurant[@"reviews"]];
+                self.reviewsSection = sectionCount;
+                sectionCount += 1;
+            }
+            self.numberOfSections = sectionCount;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"error when loading reviews: %@", error);
+        }
+    }];
+}
+
+#pragma mark UITableViewDelegate methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.numberOfSections;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //view menu
+    if (section == self.menuSection) {
+        if (self.topDishes.count != 0) {
+            //+ 1 to account for view menu cell
+            return self.topDishes.count + 1;
+        } else {
+            return 1;
+        }
+    }
+    
+    else if (section == self.awardsSection) {
+        if ([self.awards count] != 0) {
+            return [self.awards count];
+        } else {
+            return 0;
+        }
+    }
+    
+    else if (section == self.reviewsSection) {
+        if (self.reviews != 0) {
+            return self.reviews.count;
+        } else {
+            return 0;
+        }
+    }
+    else {
+        return 0;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == self.menuSection) {
+        if (self.topDishes.count != 0) {
+            return @"Top Dishes";
+        } else {
+            return @"Menu";
+        }
+    }
+    else if (section == self.awardsSection) {
+        return @"Awards";
+    }
+    else if (section == self.reviewsSection) {
+        return @"Reviews";
+    }
+    else {
+        return @"";
+    }
+
+}
+
+/*
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    CGFloat screenWidth = self.view.frame.size.width;
+    switch (section) {
+            //view menu
+        if (section == self.menuSection) {
+            UIView *menuHeader = [[UIView alloc] initWithFrame:CGRectMake(-30, 0, screenWidth, 30.0f)];
+            UILabel *menuLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
+            menuHeader.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
+            menuLabel.text = @"Menu";
+            [menuHeader addSubview:menuLabel];
+            return menuHeader;
+            break;
+        }
+            
+            //top dishes
+        case 1: {
+            UIView *topDishesHeader = [[UIView alloc] initWithFrame:CGRectMake(-30, 0, screenWidth, 30.0f)];
+            UILabel *topDishesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
+            topDishesLabel.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
+            topDishesLabel.text = @"Top Dishes";
+            [topDishesHeader addSubview:topDishesLabel];
+            return topDishesHeader;
+            break;
+        }
+            //reviews
+        case 2: {
+            UIView *reviewsHeader = [[UIView alloc] initWithFrame:CGRectMake(-30, 0, screenWidth, 30.0f)];
+            UILabel *reviewsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
+            reviewsLabel.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
+            reviewsLabel.text = @"Reviews";
+            [reviewsHeader addSubview:reviewsLabel];
+            return reviewsHeader;
+            break;
+        }
+        default: {
+            UIView *dummyHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
+            return dummyHeader;
+            break;
+        }
+    }
+}
+*/
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *viewMenuCell = @"viewMenuCell";
+    static NSString *topDishesCell = @"topDishesCell";
+    static NSString *awardsCell = @"awardsCell";
+    static NSString *reviewCell = @"reviewCell";
+    UITableViewCell *cell;
+    
+    if (indexPath.section == self.menuSection) {
+        cell = [tableView dequeueReusableCellWithIdentifier:topDishesCell];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:topDishesCell];
+        }
+        if (indexPath.row == self.topDishes.count) {
+            cell.textLabel.text = @"View Complete Menu";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else {
+            cell.textLabel.text = self.topDishes[indexPath.row][@"name"];
+        }
+
+    }
+    
+    else if (indexPath.section == self.awardsSection) {
+        PFTableViewCell *pfCell = [tableView dequeueReusableCellWithIdentifier:awardsCell];
+        if (!cell) {
+            pfCell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:awardsCell];
+        }
+        pfCell.imageView.file = self.awards[indexPath.row][@"awardIcon"];
+        pfCell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [pfCell.imageView loadInBackground];
+        
+        pfCell.textLabel.text = self.awards[indexPath.row][@"bestower"];
+        pfCell.detailTextLabel.text = self.awards[indexPath.row][@"awardTitle"];
+        return pfCell;
+    }
+    
+    else if (indexPath.section == self.reviewsSection) {
+        cell = [tableView dequeueReusableCellWithIdentifier:reviewCell];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reviewCell];
+        }
+        if (self.reviews[indexPath.row] != [NSNull null]) {
+            cell.textLabel.text = self.reviews[indexPath.row][@"publicationName"];
+            cell.detailTextLabel.text = self.reviews[indexPath.row][@"headline"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        } else {
+            cell.textLabel.text = @"Sorry!";
+            cell.detailTextLabel.text = @"There was an error retrieving this review.";
+        }
+        
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:topDishesCell];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:topDishesCell];
+        }
+        cell.textLabel.text = @"Something went wrong";
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == self.menuSection) {
+        if (indexPath.row == self.topDishes.count) {
+            MenuViewController *menuVC = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+            [menuVC storeFoursquareId:self.restaurant[@"foursquareId"] parseId:self.restaurant.objectId restaurantName:self.restaurant[@"restaurantName"] andLocuId:self.restaurant[@"locuId"]];
+            [self.navigationController pushViewController:menuVC animated:YES];
+        }
+    }
+    
+    else if (indexPath.section == self.reviewsSection) {
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+        NSURL *url = [NSURL URLWithString:self.reviews[indexPath.row][@"url"]];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        [webView loadRequest:requestObj];
+        UIViewController *webController = [[UIViewController alloc] init];
+        [webController.view addSubview:webView];
+        [self.navigationController pushViewController:webController animated:YES];
+    }
+}
+
+
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 44;
+//}
+
+
+- (void)didFinishLoadingFoursquare:(NSDictionary *)response {
+    
+}
+
+- (void)didFinishLoadingLocu:(NSDictionary *)response {
+    
+    
+}
+
+- (void)didFailWithError:(NSError *)error {
+    NSLog(@"%@", error);
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+@end

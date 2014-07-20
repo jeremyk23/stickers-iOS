@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
             
@@ -19,6 +21,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [Parse setApplicationId:@"ORu5DTWq9gk7DYBNKb9SDlni9FiKkfyYBFee99YM"
+                  clientKey:@"8PbGArQdZxbid29sDoI6bF7IFzODvbicQHDCRh3K"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
+    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC];
+    self.window.rootViewController = self.navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
