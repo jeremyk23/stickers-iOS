@@ -41,7 +41,7 @@ NSString * const FILTER_LESS_THAN_20 = @"32000";
 -(id)init {
     self = [super init];
     if (self) {
-        [self initializeLocationManager];
+//        [self initializeLocationManager];
         [self initializeFoursquareObject];
         [self initializeLocuObject];
         

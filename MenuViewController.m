@@ -55,7 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.segmentedControlMenu removeAllSegments];
-    if ([self.locuId isEqual:@""]) {
+    if ([self.locuId isEqual:@""] || self.locuId == nil) {
         [self.request requestMenuData:self.foursquareId];
     } else {
         [self.request requestLocuMenuWithVenueID:self.locuId];

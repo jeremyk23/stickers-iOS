@@ -177,7 +177,7 @@ static NSString * _BZGetMIMEBoundary() {
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSString *responseString = [[[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding] autorelease];
     NSError *error = nil;
-    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
     if (!response) {
         goto bye;
     }

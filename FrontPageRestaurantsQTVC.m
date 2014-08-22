@@ -25,7 +25,7 @@
         self.parseClassName = @"Restaurant";
         self.paginationEnabled = YES;
         self.pullToRefreshEnabled = YES;
-        self.objectsPerPage = 10;
+//        self.objectsPerPage = 10;
         self.tableView.rowHeight = [RestaurantTableViewCell rowHeight];
     }
     return self;
@@ -34,7 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshParseData) name:_NOTIFICATION_LOCATION_UPDATE object:[Singleton sharedStore]];
-    NSLog(@"currentLocation: %@", [[Singleton sharedStore] currentLocation]);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
@@ -82,8 +81,8 @@
     cell.addressLabel.text = object[@"address"];
     [cell setDollarSign:object[@"price"]];
     cell.avgScoreLabel.text = [[NSString alloc] initWithFormat:@"%lu Reviews", (unsigned long)[object[@"reviews"] count]];
-    //    cell.imageView.image = [UIImage imageNamed:@"Crunch_CU.jpg"];
     
+    cell.imageView.image = [UIImage imageNamed:@"placeholder-photo.png"];
     if (object) {
         cell.imageView.file = [object objectForKey:@"restaurantPhoto"];
         

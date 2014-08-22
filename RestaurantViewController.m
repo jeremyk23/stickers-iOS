@@ -13,15 +13,22 @@
 #import "EFoursquareParser.h"
 #import "Menu.h"
 #import "MenuViewController.h"
+
+#define NUMBER_OF_ASYNCH_CALLS 2
+
 @interface RestaurantViewController ()
+@property (nonatomic, strong) NSArray *restaurantInfo;
 @property (nonatomic, strong) NSArray *topDishes;
 @property (nonatomic, strong) NSArray *awards;
 @property (nonatomic, strong) NSArray *reviews;
 
 @property (nonatomic) int numberOfSections;
+@property (nonatomic) int infoSection;
 @property (nonatomic) int menuSection;
 @property (nonatomic) int awardsSection;
 @property (nonatomic) int reviewsSection;
+
+@property (nonatomic) int waitForTableReload;
 
 @end
 
@@ -50,6 +57,14 @@
     [super viewDidLoad];
     //in the case that a subclass with no restaurant calls this method, check to make sure restaurant exists
     if (self.restaurant) {
+        [self.request requestRestaurantInfoWithId:self.restaurant[@"foursquareId"]];
+        self.infoSection = 0;
+        self.menuSection = 1;
+        self.awardsSection = -1;
+        self.reviewsSection = -1;
+        
+        self.waitForTableReload = 0;
+        
         self.restaurantPhoto.file = self.restaurant[@"restaurantPhoto"];
         [self.restaurantPhoto loadInBackground];
         self.restaurantNameLabel.text = self.restaurant[@"restaurantName"];
@@ -66,15 +81,14 @@
     [detailQuery includeKey:@"awards"];
     [detailQuery includeKey:@"reviews"];
     [detailQuery getObjectInBackgroundWithId:self.restaurant.objectId block:^(PFObject *detailedRestaurant, NSError *error) {
+        self.restaurant = detailedRestaurant;
         if (!error) {
-            int sectionCount = 1;
-            if ([detailedRestaurant[@"topDishes"] count] != 0) {
+            int sectionCount = 2;
+            if ([detailedRestaurant[@"topDishes"] count] != 0 ) {
                 self.topDishes = [NSArray arrayWithArray:detailedRestaurant[@"topDishes"]];
-                self.menuSection = sectionCount;
-                sectionCount += 1;
             }
             
-            if ([detailedRestaurant[@"awards"] count] != 0) {
+            if (detailedRestaurant[@"awards"]) {
                 self.awards = [NSArray arrayWithArray:detailedRestaurant[@"awards"]];
                 self.awardsSection = sectionCount;
                 sectionCount += 1;
@@ -86,11 +100,35 @@
                 sectionCount += 1;
             }
             self.numberOfSections = sectionCount;
-            [self.tableView reloadData];
+            [self updateWaitForReloadTable];
         } else {
             NSLog(@"error when loading reviews: %@", error);
         }
     }];
+}
+
+- (void)configureRestaurantInfo:(NSDictionary *)venue {
+    NSString *telephoneNumber = venue[@"contact"][@"formattedPhone"];
+    NSString *openOrClosedStatus = venue[@"hours"][@"status"];
+    NSString *moreInfo = @"More Info";
+    NSMutableArray *arrayToFilterOutNils = [[NSMutableArray alloc] initWithCapacity:3];
+    if (telephoneNumber) {
+        [arrayToFilterOutNils addObject:telephoneNumber];
+    }
+    if (openOrClosedStatus) {
+        [arrayToFilterOutNils addObject:openOrClosedStatus];
+    }
+    [arrayToFilterOutNils addObject:moreInfo];
+    self.restaurantInfo = [[NSArray alloc] initWithArray:(NSArray *)arrayToFilterOutNils];
+    [self updateWaitForReloadTable];
+}
+
+- (void)updateWaitForReloadTable {
+    self.waitForTableReload += 1;
+    if (self.waitForTableReload == NUMBER_OF_ASYNCH_CALLS) {
+        [self.tableView reloadData];
+        self.waitForTableReload = 0;
+    }
 }
 
 #pragma mark UITableViewDelegate methods
@@ -99,6 +137,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == self.infoSection) {
+        if (self.restaurantInfo) {
+            return self.restaurantInfo.count;
+        } else {
+            return 1;
+        }
+    }
+
     //view menu
     if (section == self.menuSection) {
         if (self.topDishes.count != 0) {
@@ -130,6 +176,10 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == self.infoSection) {
+        return @"Restaurant Info";
+    }
+    
     if (section == self.menuSection) {
         if (self.topDishes.count != 0) {
             return @"Top Dishes";
@@ -193,13 +243,24 @@
 }
 */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *viewMenuCell = @"viewMenuCell";
+    static NSString *infoCell = @"infoCell";
     static NSString *topDishesCell = @"topDishesCell";
     static NSString *awardsCell = @"awardsCell";
     static NSString *reviewCell = @"reviewCell";
     UITableViewCell *cell;
     
-    if (indexPath.section == self.menuSection) {
+    if (indexPath.section == self.infoSection) {
+        cell = [tableView dequeueReusableCellWithIdentifier:infoCell];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:infoCell];
+        }
+        cell.textLabel.text = self.restaurantInfo[indexPath.row];
+        if (indexPath.row == self.restaurantInfo.count-1) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+    }
+    
+    else if (indexPath.section == self.menuSection) {
         cell = [tableView dequeueReusableCellWithIdentifier:topDishesCell];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:topDishesCell];
@@ -278,7 +339,7 @@
 
 
 - (void)didFinishLoadingFoursquare:(NSDictionary *)response {
-    
+    [self configureRestaurantInfo:response[@"venue"]];
 }
 
 - (void)didFinishLoadingLocu:(NSDictionary *)response {

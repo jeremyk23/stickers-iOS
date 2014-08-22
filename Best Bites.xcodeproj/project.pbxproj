@@ -56,6 +56,7 @@
 		46710F5619718AD20024CECD /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F4E19718AD20024CECD /* ALView+PureLayout.m */; };
 		46710F5719718AD20024CECD /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F5019718AD20024CECD /* NSArray+PureLayout.m */; };
 		46710F5819718AD20024CECD /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F5219718AD20024CECD /* NSLayoutConstraint+PureLayout.m */; };
+		469B5AD4198733B900738BF8 /* placeholder-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 469B5AD3198733B900738BF8 /* placeholder-photo.png */; };
 		46AF798A197AB34000730F91 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF7988197AB34000730F91 /* SearchViewController.m */; };
 		46AF798B197AB34000730F91 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AF7989197AB34000730F91 /* SearchViewController.xib */; };
 		46AF7999197B536100730F91 /* FoursquareRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF7998197B536100730F91 /* FoursquareRestaurantViewController.m */; };
@@ -160,6 +161,7 @@
 		46710F5419718AD20024CECD /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
 		46710F5519718AD20024CECD /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
 		46710F5B19718C940024CECD /* BestBites-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BestBites-PrefixHeader.pch"; path = "../BestBites-PrefixHeader.pch"; sourceTree = "<group>"; };
+		469B5AD3198733B900738BF8 /* placeholder-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-photo.png"; sourceTree = "<group>"; };
 		46AF7987197AB34000730F91 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		46AF7988197AB34000730F91 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		46AF7989197AB34000730F91 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			children = (
 				46710EE819716ED20024CECD /* FrontPageRestaurantsQTVC.h */,
 				46710EE919716ED20024CECD /* FrontPageRestaurantsQTVC.m */,
+				469B5AD3198733B900738BF8 /* placeholder-photo.png */,
 				46710F43197187C90024CECD /* RestaurantTableViewCell.h */,
 				46710F44197187C90024CECD /* RestaurantTableViewCell.m */,
 			);
@@ -594,6 +597,7 @@
 			files = (
 				46710F4A1971883F0024CECD /* gradient_parse2.png in Resources */,
 				46710EB3197166840024CECD /* Images.xcassets in Resources */,
+				469B5AD4198733B900738BF8 /* placeholder-photo.png in Resources */,
 				46710F3F197187880024CECD /* MenuViewController.xib in Resources */,
 				46AF798B197AB34000730F91 /* SearchViewController.xib in Resources */,
 				46710F3A1971877B0024CECD /* RestaurantViewController.xib in Resources */,
@@ -707,6 +711,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "4E228F1A-5BFE-41C2-9606-D59B602DE5DC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -728,7 +733,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jeremy Klein (9JD849925C)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -741,6 +746,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "4E228F1A-5BFE-41C2-9606-D59B602DE5DC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -751,7 +757,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jeremy Klein (9JD849925C)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -761,7 +767,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4E228F1A-5BFE-41C2-9606-D59B602DE5DC";
 			};
 			name = Debug;
 		};
@@ -780,7 +786,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4E228F1A-5BFE-41C2-9606-D59B602DE5DC";
 			};
 			name = Release;
 		};
