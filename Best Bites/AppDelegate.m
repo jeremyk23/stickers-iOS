@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomeViewController.h"
+#import "AFViewController.h"
 #import <Parse/Parse.h>
 
 @interface AppDelegate ()
@@ -26,7 +27,7 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     
-    HomeViewController *homeVC = [[HomeViewController alloc] init];
+    AFViewController *homeVC = [[AFViewController alloc] init];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC];
     self.window.rootViewController = self.navigationController;
     self.window.backgroundColor = [UIColor whiteColor];

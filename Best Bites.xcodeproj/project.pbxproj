@@ -56,11 +56,16 @@
 		46710F5619718AD20024CECD /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F4E19718AD20024CECD /* ALView+PureLayout.m */; };
 		46710F5719718AD20024CECD /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F5019718AD20024CECD /* NSArray+PureLayout.m */; };
 		46710F5819718AD20024CECD /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F5219718AD20024CECD /* NSLayoutConstraint+PureLayout.m */; };
+		467B915A19A7AE7800EB847C /* RestaurantCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 467B915919A7AE7800EB847C /* RestaurantCategory.m */; };
+		467B916119A7BD1600EB847C /* BBCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 467B915F19A7BD1600EB847C /* BBCategoryCell.m */; };
+		467B916219A7BD1600EB847C /* BBCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 467B916019A7BD1600EB847C /* BBCategoryCell.xib */; };
 		469B5AD4198733B900738BF8 /* placeholder-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 469B5AD3198733B900738BF8 /* placeholder-photo.png */; };
 		46AF798A197AB34000730F91 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF7988197AB34000730F91 /* SearchViewController.m */; };
 		46AF798B197AB34000730F91 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AF7989197AB34000730F91 /* SearchViewController.xib */; };
 		46AF7999197B536100730F91 /* FoursquareRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF7998197B536100730F91 /* FoursquareRestaurantViewController.m */; };
 		46AF79A0197BF87600730F91 /* FoursquareRestaurantTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF799F197BF87600730F91 /* FoursquareRestaurantTableView.m */; };
+		46FD407419A6F10E00A44AD6 /* AFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FD407319A6F10E00A44AD6 /* AFViewController.m */; };
+		46FD407719A6F11D00A44AD6 /* AFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FD407619A6F11D00A44AD6 /* AFTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +166,11 @@
 		46710F5419718AD20024CECD /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
 		46710F5519718AD20024CECD /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
 		46710F5B19718C940024CECD /* BestBites-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BestBites-PrefixHeader.pch"; path = "../BestBites-PrefixHeader.pch"; sourceTree = "<group>"; };
+		467B915819A7AE7800EB847C /* RestaurantCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantCategory.h; sourceTree = "<group>"; };
+		467B915919A7AE7800EB847C /* RestaurantCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantCategory.m; sourceTree = "<group>"; };
+		467B915E19A7BD1600EB847C /* BBCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCategoryCell.h; sourceTree = "<group>"; };
+		467B915F19A7BD1600EB847C /* BBCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCategoryCell.m; sourceTree = "<group>"; };
+		467B916019A7BD1600EB847C /* BBCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBCategoryCell.xib; sourceTree = "<group>"; };
 		469B5AD3198733B900738BF8 /* placeholder-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-photo.png"; sourceTree = "<group>"; };
 		46AF7987197AB34000730F91 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		46AF7988197AB34000730F91 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
@@ -169,6 +179,10 @@
 		46AF7998197B536100730F91 /* FoursquareRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareRestaurantViewController.m; sourceTree = "<group>"; };
 		46AF799E197BF87600730F91 /* FoursquareRestaurantTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareRestaurantTableView.h; sourceTree = "<group>"; };
 		46AF799F197BF87600730F91 /* FoursquareRestaurantTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareRestaurantTableView.m; sourceTree = "<group>"; };
+		46FD407219A6F10E00A44AD6 /* AFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFViewController.h; sourceTree = "<group>"; };
+		46FD407319A6F10E00A44AD6 /* AFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFViewController.m; sourceTree = "<group>"; };
+		46FD407519A6F11D00A44AD6 /* AFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTableViewCell.h; sourceTree = "<group>"; };
+		46FD407619A6F11D00A44AD6 /* AFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +359,7 @@
 		46710F2E1971856C0024CECD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				467B915B19A7AE8500EB847C /* RestaurantCategory */,
 				46710F31197185BB0024CECD /* MenuModel */,
 				46710F30197185AB0024CECD /* RestaurantModels */,
 			);
@@ -395,6 +410,7 @@
 		46710F32197186920024CECD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				46FD407119A6F0F300A44AD6 /* CategoriesView */,
 				46AF798F197B07CA00730F91 /* Search */,
 				46710F4C1971885B0024CECD /* Home */,
 				46710F46197187D20024CECD /* FrontPage */,
@@ -494,6 +510,15 @@
 			name = "Libraries And Frameworks";
 			sourceTree = "<group>";
 		};
+		467B915B19A7AE8500EB847C /* RestaurantCategory */ = {
+			isa = PBXGroup;
+			children = (
+				467B915819A7AE7800EB847C /* RestaurantCategory.h */,
+				467B915919A7AE7800EB847C /* RestaurantCategory.m */,
+			);
+			name = RestaurantCategory;
+			sourceTree = "<group>";
+		};
 		46AF798F197B07CA00730F91 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +538,20 @@
 				46AF799F197BF87600730F91 /* FoursquareRestaurantTableView.m */,
 			);
 			name = "Foursquare Restaurant";
+			sourceTree = "<group>";
+		};
+		46FD407119A6F0F300A44AD6 /* CategoriesView */ = {
+			isa = PBXGroup;
+			children = (
+				46FD407219A6F10E00A44AD6 /* AFViewController.h */,
+				46FD407319A6F10E00A44AD6 /* AFViewController.m */,
+				46FD407519A6F11D00A44AD6 /* AFTableViewCell.h */,
+				46FD407619A6F11D00A44AD6 /* AFTableViewCell.m */,
+				467B915E19A7BD1600EB847C /* BBCategoryCell.h */,
+				467B915F19A7BD1600EB847C /* BBCategoryCell.m */,
+				467B916019A7BD1600EB847C /* BBCategoryCell.xib */,
+			);
+			name = CategoriesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -599,6 +638,7 @@
 				46710EB3197166840024CECD /* Images.xcassets in Resources */,
 				469B5AD4198733B900738BF8 /* placeholder-photo.png in Resources */,
 				46710F3F197187880024CECD /* MenuViewController.xib in Resources */,
+				467B916219A7BD1600EB847C /* BBCategoryCell.xib in Resources */,
 				46AF798B197AB34000730F91 /* SearchViewController.xib in Resources */,
 				46710F3A1971877B0024CECD /* RestaurantViewController.xib in Resources */,
 			);
@@ -622,6 +662,7 @@
 				46710F2C197185620024CECD /* ParseRestaurant.m in Sources */,
 				46710EF8197171D40024CECD /* BBLabel.m in Sources */,
 				46710F2B197185620024CECD /* RestaurantModel.m in Sources */,
+				46FD407419A6F10E00A44AD6 /* AFViewController.m in Sources */,
 				46710F5719718AD20024CECD /* NSArray+PureLayout.m in Sources */,
 				46710F28197185620024CECD /* Menu_SectionDescr.m in Sources */,
 				46AF798A197AB34000730F91 /* SearchViewController.m in Sources */,
@@ -638,12 +679,14 @@
 				46710EEA19716ED20024CECD /* FrontPageRestaurantsQTVC.m in Sources */,
 				46710F2D197185620024CECD /* FoursquareRestaurant.m in Sources */,
 				46710F45197187C90024CECD /* RestaurantTableViewCell.m in Sources */,
+				467B916119A7BD1600EB847C /* BBCategoryCell.m in Sources */,
 				46710F5819718AD20024CECD /* NSLayoutConstraint+PureLayout.m in Sources */,
 				46710F29197185620024CECD /* Menu_Dish.m in Sources */,
 				46710F3E197187880024CECD /* MenuViewController.m in Sources */,
 				46710EF4197171490024CECD /* Singleton.m in Sources */,
 				46710F0D197172070024CECD /* ELocuParser.m in Sources */,
 				46710F09197172070024CECD /* JKLocuRequest.m in Sources */,
+				467B915A19A7AE7800EB847C /* RestaurantCategory.m in Sources */,
 				46710F25197185620024CECD /* Menu.m in Sources */,
 				46710F42197187970024CECD /* MenuItemTableViewCell.m in Sources */,
 				46AF7999197B536100730F91 /* FoursquareRestaurantViewController.m in Sources */,
@@ -651,6 +694,7 @@
 				46710F0A197172070024CECD /* BZFoursquare.m in Sources */,
 				46710F5619718AD20024CECD /* ALView+PureLayout.m in Sources */,
 				46710EE4197169570024CECD /* HomeViewController.m in Sources */,
+				46FD407719A6F11D00A44AD6 /* AFTableViewCell.m in Sources */,
 				46710F391971877B0024CECD /* RestaurantViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
