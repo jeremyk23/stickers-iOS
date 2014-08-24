@@ -7,6 +7,7 @@
 //
 
 #import "AFViewController.h"
+#import "RestaurantViewController.h"
 #import "AFTableViewCell.h"
 #import "Constants.h"
 #import "RestaurantCategory.h"
@@ -116,27 +117,25 @@
     BBCategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
     
     RestaurantCategory *rc = self.categoriesArray[collectionView.tag];
-    
-//    UIView *restaurantDisplayView = [[UIView alloc] initWithFrame:cell.contentView.frame];
-//    UILabel *restaurantNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, restaurantDisplayView.frame.size.width, 44.0f)];
-//    restaurantNameLabel.text = rc.restaurants[indexPath.item][@"restaurantName"];
-//    [restaurantDisplayView addSubview:restaurantNameLabel];
-    
-//    if (rc.restaurants[indexPath.item][@"restaurantPhoto"]) {
     cell.restaurantPhoto.image = [UIImage imageNamed:@"placeholder-photo.png"];
-//    cell.restaurantPhoto.alpha = 0.5f;
     cell.restaurantNameLabel.text = rc.restaurants[indexPath.item][@"restaurantName"];
         [self.view bringSubviewToFront:cell.restaurantNameLabel];
-        PFFile *test = rc.restaurants[indexPath.item][@"restaurantPhoto"];
-        if (test) {
-            NSLog(@"%@", test);
-            cell.restaurantPhoto.file = test;
+        PFFile *photoFile = rc.restaurants[indexPath.item][@"restaurantPhoto"];
+        if (photoFile) {
+            cell.restaurantPhoto.file = photoFile;
             [cell.restaurantPhoto loadInBackground];
         }
     
 
     
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    RestaurantCategory *rc = self.categoriesArray[collectionView.tag];
+    PFObject *restaurant = rc.restaurants[indexPath.item];
+    RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] initWithNibName:@"RestaurantViewController" bundle:nil andPFObject:restaurant];
+    [self.navigationController pushViewController:restaurantVC animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate Methods

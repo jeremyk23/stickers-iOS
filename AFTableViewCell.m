@@ -32,9 +32,6 @@
     self.categoryLabel.textColor = [UIColor whiteColor];
     self.categoryLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.categoryLabel];
-//    self.transparencyView = [[UIView alloc] initWithFrame:CGRectMake(0, 190.0f, self.frame.size.width, 65.0f)];
-//    self.transparencyView.backgroundColor = [UIColor colorWithRed:118/255.0f green:176/255.0f blue:182.0f/255.0f alpha:0.5];
-//    [self.collectionView addSubview:self.transparencyView];
     
     [self.contentView addSubview:self.collectionView];
     
