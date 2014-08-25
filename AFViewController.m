@@ -128,9 +128,6 @@
                 cell.restaurantPhoto.image = [Helpers imageByScalingAndCroppingForSize:cell.restaurantPhoto.frame.size withImage:image];
             }];
         }
-    
-
-    
     return cell;
 }
 

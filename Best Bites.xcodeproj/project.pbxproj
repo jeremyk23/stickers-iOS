@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EAC168AF87D4C888132DB9C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 384491497425439C85D48CD9 /* libPods.a */; };
 		46710EAE197166840024CECD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EAD197166840024CECD /* main.m */; };
 		46710EB1197166840024CECD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EB0197166840024CECD /* AppDelegate.m */; };
 		46710EB3197166840024CECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46710EB2197166840024CECD /* Images.xcassets */; };
@@ -83,6 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		384491497425439C85D48CD9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		46710EA8197166840024CECD /* Best Bites.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Best Bites.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46710EAC197166840024CECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46710EAD197166840024CECD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -187,12 +189,34 @@
 		46FD407319A6F10E00A44AD6 /* AFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFViewController.m; sourceTree = "<group>"; };
 		46FD407519A6F11D00A44AD6 /* AFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTableViewCell.h; sourceTree = "<group>"; };
 		46FD407619A6F11D00A44AD6 /* AFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTableViewCell.m; sourceTree = "<group>"; };
+		7D5FA9DD3B674253BC90389B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D41733AB19AADDCE00F62861 /* RestaurantPhotoGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantPhotoGalleryCell.h; sourceTree = "<group>"; };
 		D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantPhotoGalleryCell.m; sourceTree = "<group>"; };
 		D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantPhotoGalleryCell.xib; sourceTree = "<group>"; };
 		D4C7982419AB8826003D9D53 /* Common Issues.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Common Issues.rtf"; sourceTree = "<group>"; };
 		D4C7982619AB9159003D9D53 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		D4C7982719AB9159003D9D53 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
+		D4C7982A19ABA482003D9D53 /* FSBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImage.h; sourceTree = "<group>"; };
+		D4C7982B19ABA482003D9D53 /* FSBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImage.m; sourceTree = "<group>"; };
+		D4C7982C19ABA482003D9D53 /* FSBasicImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImageSource.h; sourceTree = "<group>"; };
+		D4C7982D19ABA482003D9D53 /* FSBasicImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImageSource.m; sourceTree = "<group>"; };
+		D4C7982E19ABA482003D9D53 /* FSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImage.h; sourceTree = "<group>"; };
+		D4C7982F19ABA482003D9D53 /* FSImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageLoader.h; sourceTree = "<group>"; };
+		D4C7983019ABA482003D9D53 /* FSImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageLoader.m; sourceTree = "<group>"; };
+		D4C7983119ABA482003D9D53 /* FSImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageScrollView.h; sourceTree = "<group>"; };
+		D4C7983219ABA482003D9D53 /* FSImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageScrollView.m; sourceTree = "<group>"; };
+		D4C7983319ABA482003D9D53 /* FSImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageSource.h; sourceTree = "<group>"; };
+		D4C7983419ABA482003D9D53 /* FSImageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTitleView.h; sourceTree = "<group>"; };
+		D4C7983519ABA482003D9D53 /* FSImageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageTitleView.m; sourceTree = "<group>"; };
+		D4C7983619ABA482003D9D53 /* FSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageView.h; sourceTree = "<group>"; };
+		D4C7983719ABA482003D9D53 /* FSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageView.m; sourceTree = "<group>"; };
+		D4C7983819ABA482003D9D53 /* FSImageViewer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSImageViewer-Prefix.pch"; sourceTree = "<group>"; };
+		D4C7983919ABA482003D9D53 /* FSImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewer.h; sourceTree = "<group>"; };
+		D4C7983A19ABA482003D9D53 /* FSImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewerViewController.h; sourceTree = "<group>"; };
+		D4C7983B19ABA482003D9D53 /* FSImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageViewerViewController.m; sourceTree = "<group>"; };
+		D4C7983C19ABA482003D9D53 /* FSPlaceholderImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlaceholderImages.h; sourceTree = "<group>"; };
+		D4C7983D19ABA482003D9D53 /* FSPlaceholderImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaceholderImages.m; sourceTree = "<group>"; };
+		D4C7983E19ABA482003D9D53 /* FSTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTitleView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +237,7 @@
 				46710ED0197167300024CECD /* CoreGraphics.framework in Frameworks */,
 				46710ED1197167300024CECD /* CoreLocation.framework in Frameworks */,
 				46710EC9197167110024CECD /* MapKit.framework in Frameworks */,
+				3EAC168AF87D4C888132DB9C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +251,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46455327E7B040449CDA1E5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				384491497425439C85D48CD9 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		46710E9F197166840024CECD = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +266,8 @@
 				46710EAA197166840024CECD /* Best Bites */,
 				46710EBB197166840024CECD /* Best BitesTests */,
 				46710EA9197166840024CECD /* Products */,
+				7D5FA9DD3B674253BC90389B /* Pods.xcconfig */,
+				46455327E7B040449CDA1E5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -508,6 +543,7 @@
 		46710F5A19718AE30024CECD /* Libraries And Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4C7982919ABA482003D9D53 /* FSImageViewer */,
 				46710F5919718AD80024CECD /* PureLayout */,
 				46710EE0197168720024CECD /* Parse.framework */,
 				46710EDE1971676A0024CECD /* libz.dylib */,
@@ -570,6 +606,34 @@
 			name = CategoriesView;
 			sourceTree = "<group>";
 		};
+		D4C7982919ABA482003D9D53 /* FSImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				D4C7982A19ABA482003D9D53 /* FSBasicImage.h */,
+				D4C7982B19ABA482003D9D53 /* FSBasicImage.m */,
+				D4C7982C19ABA482003D9D53 /* FSBasicImageSource.h */,
+				D4C7982D19ABA482003D9D53 /* FSBasicImageSource.m */,
+				D4C7982E19ABA482003D9D53 /* FSImage.h */,
+				D4C7982F19ABA482003D9D53 /* FSImageLoader.h */,
+				D4C7983019ABA482003D9D53 /* FSImageLoader.m */,
+				D4C7983119ABA482003D9D53 /* FSImageScrollView.h */,
+				D4C7983219ABA482003D9D53 /* FSImageScrollView.m */,
+				D4C7983319ABA482003D9D53 /* FSImageSource.h */,
+				D4C7983419ABA482003D9D53 /* FSImageTitleView.h */,
+				D4C7983519ABA482003D9D53 /* FSImageTitleView.m */,
+				D4C7983619ABA482003D9D53 /* FSImageView.h */,
+				D4C7983719ABA482003D9D53 /* FSImageView.m */,
+				D4C7983819ABA482003D9D53 /* FSImageViewer-Prefix.pch */,
+				D4C7983919ABA482003D9D53 /* FSImageViewer.h */,
+				D4C7983A19ABA482003D9D53 /* FSImageViewerViewController.h */,
+				D4C7983B19ABA482003D9D53 /* FSImageViewerViewController.m */,
+				D4C7983C19ABA482003D9D53 /* FSPlaceholderImages.h */,
+				D4C7983D19ABA482003D9D53 /* FSPlaceholderImages.m */,
+				D4C7983E19ABA482003D9D53 /* FSTitleView.h */,
+			);
+			path = FSImageViewer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -577,9 +641,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46710EC2197166840024CECD /* Build configuration list for PBXNativeTarget "Best Bites" */;
 			buildPhases = (
+				1A5105E534C94DAE990D2C76 /* Check Pods Manifest.lock */,
 				46710EA4197166840024CECD /* Sources */,
 				46710EA5197166840024CECD /* Frameworks */,
 				46710EA6197166840024CECD /* Resources */,
+				7F2E88D6E7BF4C07A21EAD12 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -671,6 +737,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A5105E534C94DAE990D2C76 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7F2E88D6E7BF4C07A21EAD12 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		46710EA4197166840024CECD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -740,6 +839,7 @@
 /* Begin XCBuildConfiguration section */
 		46710EC0197166840024CECD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D5FA9DD3B674253BC90389B /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -782,6 +882,7 @@
 		};
 		46710EC1197166840024CECD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D5FA9DD3B674253BC90389B /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -818,6 +919,7 @@
 		};
 		46710EC3197166840024CECD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D5FA9DD3B674253BC90389B /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -837,6 +939,7 @@
 		};
 		46710EC4197166840024CECD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D5FA9DD3B674253BC90389B /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

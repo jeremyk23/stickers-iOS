@@ -13,23 +13,35 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AOP-wd-7bD" customClass="PFImageView">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaV-Y5-uqz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
-                    </imageView>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijQ-zE-ufY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ijQ-zE-ufY" firstAttribute="top" secondItem="AaV-Y5-uqz" secondAttribute="top" id="0Dk-jf-ZDn"/>
+                            <constraint firstAttribute="bottom" secondItem="ijQ-zE-ufY" secondAttribute="bottom" id="BxD-0W-bN1"/>
+                            <constraint firstAttribute="trailing" secondItem="ijQ-zE-ufY" secondAttribute="trailing" id="Rwr-KS-FoJ"/>
+                            <constraint firstItem="ijQ-zE-ufY" firstAttribute="leading" secondItem="AaV-Y5-uqz" secondAttribute="leading" id="cs0-OF-hmD"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <nil key="simulatedStatusBarMetrics"/>
                 <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="AOP-wd-7bD" secondAttribute="bottom" id="4x1-D2-QXE"/>
-                <constraint firstAttribute="trailing" secondItem="AOP-wd-7bD" secondAttribute="trailing" id="6c4-Vf-7Jk"/>
-                <constraint firstItem="AOP-wd-7bD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bUF-RH-SaL"/>
-                <constraint firstItem="AOP-wd-7bD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kWg-UE-H3T"/>
+                <constraint firstAttribute="bottom" secondItem="AaV-Y5-uqz" secondAttribute="bottom" id="07j-58-2Xp"/>
+                <constraint firstAttribute="trailing" secondItem="AaV-Y5-uqz" secondAttribute="trailing" id="5yQ-qk-ZeL"/>
+                <constraint firstItem="AaV-Y5-uqz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uEw-ES-veZ"/>
+                <constraint firstItem="AaV-Y5-uqz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xwg-Yc-inD"/>
             </constraints>
             <size key="customSize" width="320" height="160"/>
             <connections>
-                <outlet property="photo" destination="AOP-wd-7bD" id="jRR-9d-UlA"/>
+                <outlet property="imageView" destination="ijQ-zE-ufY" id="8pS-ow-6Hw"/>
             </connections>
             <point key="canvasLocation" x="209" y="238"/>
         </collectionViewCell>

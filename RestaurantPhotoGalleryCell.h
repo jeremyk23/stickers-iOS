@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface RestaurantPhotoGalleryCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet PFImageView *photo;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
