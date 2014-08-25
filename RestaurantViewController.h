@@ -13,11 +13,13 @@
 @class PFImageView;
 @class BBLabel;
 
-@interface RestaurantViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ERequestInterfaceDelegate>
+@interface RestaurantViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ERequestInterfaceDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) ERequestInterface *request;
 @property (weak, nonatomic) IBOutlet BBLabel *addressLabel;
 @property (weak, nonatomic) IBOutlet BBLabel *restaurantNameLabel;
-@property (weak, nonatomic) IBOutlet PFImageView *restaurantPhoto;
+@property (weak, nonatomic) IBOutlet UICollectionView *photoGallery;
+
+//@property (weak, nonatomic) IBOutlet PFImageView *restaurantPhoto;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) PFObject *restaurant;
 

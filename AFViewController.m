@@ -13,6 +13,7 @@
 #import "RestaurantCategory.h"
 #import "BBCategoryCell.h"
 #import "BBLabel.h"
+#import "Helpers.h"
 
 #import <Parse/Parse.h>
 
@@ -123,7 +124,9 @@
         PFFile *photoFile = rc.restaurants[indexPath.item][@"restaurantPhoto"];
         if (photoFile) {
             cell.restaurantPhoto.file = photoFile;
-            [cell.restaurantPhoto loadInBackground];
+            [cell.restaurantPhoto loadInBackground:^(UIImage *image, NSError *error) {
+                cell.restaurantPhoto.image = [Helpers imageByScalingAndCroppingForSize:cell.restaurantPhoto.frame.size withImage:image];
+            }];
         }
     
 

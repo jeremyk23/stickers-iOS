@@ -13,6 +13,7 @@
 #import "EFoursquareParser.h"
 #import "Menu.h"
 #import "MenuViewController.h"
+#import "RestaurantPhotoGalleryCell.h"
 
 #define NUMBER_OF_ASYNCH_CALLS 2
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) NSArray *topDishes;
 @property (nonatomic, strong) NSArray *awards;
 @property (nonatomic, strong) NSArray *reviews;
+@property (nonatomic, strong) NSArray *photos;
 
 @property (nonatomic) int numberOfSections;
 @property (nonatomic) int infoSection;
@@ -65,14 +67,29 @@
         
         self.waitForTableReload = 0;
         
-        self.restaurantPhoto.file = self.restaurant[@"restaurantPhoto"];
-        [self.restaurantPhoto loadInBackground];
+        [self createPhotosArray];
+        [self.photoGallery registerNib:[UINib nibWithNibName:@"RestaurantPhotoGalleryCell" bundle:nil]  forCellWithReuseIdentifier:@"RestaurantPhotoCell"];
+        self.photos = [self createPhotosArray];
+        [self.photoGallery reloadData];
+        
+//        self.restaurantPhoto.file = self.restaurant[@"restaurantPhoto"];
+//        [self.restaurantPhoto loadInBackground];
         self.restaurantNameLabel.text = self.restaurant[@"restaurantName"];
         self.restaurantNameLabel.textColor = [UIColor blackColor];
         self.addressLabel.text = self.restaurant[@"address"];
         [self.view bringSubviewToFront:self.restaurantNameLabel];
         [self detailedRestaurantQuery];
     }
+}
+
+- (NSArray *)createPhotosArray {
+    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[self.restaurant[@"pictures"] count] + 1];
+    PFFile *mainRestaurantPhoto = self.restaurant[@"restaurantPhoto"];
+    if (mainRestaurantPhoto) {
+        [tempArray addObject:mainRestaurantPhoto];
+    }
+    [tempArray addObjectsFromArray:self.restaurant[@"pictures"]];
+    return (NSArray *)tempArray;
 }
 
 - (void)detailedRestaurantQuery {
@@ -332,6 +349,45 @@
     }
 }
 
+#pragma mark - UICollectionViewDataSource Methods
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (self.photos) {
+        return self.photos.count;
+    } else {
+        return 1;
+    }
+}
+
+- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    RestaurantPhotoGalleryCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"RestaurantPhotoCell" forIndexPath:indexPath];
+    if (indexPath.row == 0) {
+        cell.photo.image = [UIImage imageNamed:@"placeholder-photo.png"];
+        cell.photo.file = self.photos[indexPath.row];
+        [cell.photo loadInBackground];
+    } else {
+        cell.photo.image = [UIImage imageNamed:@"placeholder-photo.png"];
+        NSURL *photoURL = [NSURL URLWithString:self.photos[indexPath.row]];
+        if (photoURL && photoURL.scheme && photoURL.host) {
+            cell.photo.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+        }
+        
+    }
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Select Item
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(320.0f, 180.0f);
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    return 44;

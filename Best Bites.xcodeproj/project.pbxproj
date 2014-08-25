@@ -66,6 +66,10 @@
 		46AF79A0197BF87600730F91 /* FoursquareRestaurantTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46AF799F197BF87600730F91 /* FoursquareRestaurantTableView.m */; };
 		46FD407419A6F10E00A44AD6 /* AFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FD407319A6F10E00A44AD6 /* AFViewController.m */; };
 		46FD407719A6F11D00A44AD6 /* AFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FD407619A6F11D00A44AD6 /* AFTableViewCell.m */; };
+		D41733AE19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */; };
+		D41733AF19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */; };
+		D4C7982519AB8826003D9D53 /* Common Issues.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D4C7982419AB8826003D9D53 /* Common Issues.rtf */; };
+		D4C7982819AB9159003D9D53 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7982719AB9159003D9D53 /* Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +187,12 @@
 		46FD407319A6F10E00A44AD6 /* AFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFViewController.m; sourceTree = "<group>"; };
 		46FD407519A6F11D00A44AD6 /* AFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTableViewCell.h; sourceTree = "<group>"; };
 		46FD407619A6F11D00A44AD6 /* AFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTableViewCell.m; sourceTree = "<group>"; };
+		D41733AB19AADDCE00F62861 /* RestaurantPhotoGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantPhotoGalleryCell.h; sourceTree = "<group>"; };
+		D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantPhotoGalleryCell.m; sourceTree = "<group>"; };
+		D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantPhotoGalleryCell.xib; sourceTree = "<group>"; };
+		D4C7982419AB8826003D9D53 /* Common Issues.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Common Issues.rtf"; sourceTree = "<group>"; };
+		D4C7982619AB9159003D9D53 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		D4C7982719AB9159003D9D53 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +267,7 @@
 				46710EAC197166840024CECD /* Info.plist */,
 				46710F5B19718C940024CECD /* BestBites-PrefixHeader.pch */,
 				46710EAD197166840024CECD /* main.m */,
+				D4C7982419AB8826003D9D53 /* Common Issues.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -288,6 +299,8 @@
 				46710EEF197170740024CECD /* ParseUtils.m */,
 				46710EF2197171490024CECD /* Singleton.h */,
 				46710EF3197171490024CECD /* Singleton.m */,
+				D4C7982619AB9159003D9D53 /* Helpers.h */,
+				D4C7982719AB9159003D9D53 /* Helpers.m */,
 			);
 			name = Globals;
 			path = ..;
@@ -439,6 +452,9 @@
 				46710F361971877B0024CECD /* RestaurantViewController.h */,
 				46710F371971877B0024CECD /* RestaurantViewController.m */,
 				46710F381971877B0024CECD /* RestaurantViewController.xib */,
+				D41733AB19AADDCE00F62861 /* RestaurantPhotoGalleryCell.h */,
+				D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */,
+				D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */,
 				46AF799D197BF7B800730F91 /* Foursquare Restaurant */,
 			);
 			name = Restaurant;
@@ -636,7 +652,9 @@
 			files = (
 				46710F4A1971883F0024CECD /* gradient_parse2.png in Resources */,
 				46710EB3197166840024CECD /* Images.xcassets in Resources */,
+				D41733AF19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib in Resources */,
 				469B5AD4198733B900738BF8 /* placeholder-photo.png in Resources */,
+				D4C7982519AB8826003D9D53 /* Common Issues.rtf in Resources */,
 				46710F3F197187880024CECD /* MenuViewController.xib in Resources */,
 				467B916219A7BD1600EB847C /* BBCategoryCell.xib in Resources */,
 				46AF798B197AB34000730F91 /* SearchViewController.xib in Resources */,
@@ -665,6 +683,7 @@
 				46FD407419A6F10E00A44AD6 /* AFViewController.m in Sources */,
 				46710F5719718AD20024CECD /* NSArray+PureLayout.m in Sources */,
 				46710F28197185620024CECD /* Menu_SectionDescr.m in Sources */,
+				D4C7982819AB9159003D9D53 /* Helpers.m in Sources */,
 				46AF798A197AB34000730F91 /* SearchViewController.m in Sources */,
 				46710F08197172070024CECD /* JKLocu.m in Sources */,
 				46710F26197185620024CECD /* Menu_MenuType.m in Sources */,
@@ -674,6 +693,7 @@
 				46710EF0197170740024CECD /* ParseUtils.m in Sources */,
 				46710EB1197166840024CECD /* AppDelegate.m in Sources */,
 				46710F27197185620024CECD /* Menu_SectionTitle.m in Sources */,
+				D41733AE19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m in Sources */,
 				46710F07197172070024CECD /* ERequestInterface.m in Sources */,
 				46710F0C197172070024CECD /* EFoursquareParser.m in Sources */,
 				46710EEA19716ED20024CECD /* FrontPageRestaurantsQTVC.m in Sources */,
