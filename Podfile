@@ -1,0 +1,5 @@
+platform :ios, '6.0'
+pod 'FSImageViewer', '~> 2.6'
+pod 'Facebook-iOS-SDK', '~> 3.17.0'
+pod 'SDWebImage', '~>3.7.1'
+workspace 'project'
