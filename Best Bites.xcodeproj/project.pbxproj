@@ -34,8 +34,8 @@
 		46710F07197172070024CECD /* ERequestInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EFA197172070024CECD /* ERequestInterface.m */; };
 		46710F08197172070024CECD /* JKLocu.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EFC197172070024CECD /* JKLocu.m */; };
 		46710F09197172070024CECD /* JKLocuRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710EFE197172070024CECD /* JKLocuRequest.m */; };
-		46710F0A197172070024CECD /* BZFoursquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F00197172070024CECD /* BZFoursquare.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		46710F0B197172070024CECD /* BZFoursquareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F02197172070024CECD /* BZFoursquareRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		46710F0A197172070024CECD /* BZFoursquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F00197172070024CECD /* BZFoursquare.m */; };
+		46710F0B197172070024CECD /* BZFoursquareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F02197172070024CECD /* BZFoursquareRequest.m */; };
 		46710F0C197172070024CECD /* EFoursquareParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F04197172070024CECD /* EFoursquareParser.m */; };
 		46710F0D197172070024CECD /* ELocuParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F06197172070024CECD /* ELocuParser.m */; };
 		46710F25197185620024CECD /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 46710F14197185620024CECD /* Menu.m */; };

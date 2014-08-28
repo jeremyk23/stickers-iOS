@@ -90,8 +90,7 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(AFTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)tableView:(UITableView *)tableView willDisplayCell:(AFTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     [cell setCollectionViewDataSourceDelegate:self index:indexPath.row];
     NSInteger index = cell.collectionView.tag;
     
@@ -101,15 +100,13 @@
 
 #pragma mark - UITableViewDelegate Methods
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 245.0f;
 }
 
 #pragma mark - UICollectionViewDataSource Methods
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     RestaurantCategory *rc = self.categoriesArray[collectionView.tag];
     return rc.restaurants.count;
 }
@@ -140,8 +137,7 @@
 
 #pragma mark - UIScrollViewDelegate Methods
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (![scrollView isKindOfClass:[UICollectionView class]]) return;
     
     CGFloat horizontalOffset = scrollView.contentOffset.x;
