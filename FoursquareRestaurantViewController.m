@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *foursquareId;
 @property (nonatomic, strong) NSDictionary *restaurantDict;
 @property (nonatomic, strong) NSArray *tips;
+@property (nonatomic, strong) NSArray *photos;
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 
 @end
@@ -61,7 +62,7 @@
 - (void)setPhotoHeaderWithResponse:(NSDictionary *)response {
     if (response[@"photos"][@"count"] != 0) {
         NSURL *url = [EFoursquareParser getPhotoClosestTo:640 byHeight:360 withResponse:response];
-        self.restaurantPhoto.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+        self.photos = [[NSArray alloc] initWithObjects:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]], nil];
     } else {
         //use placeholder image
     }

@@ -8,13 +8,13 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "BestBites-App-Icon-iPhone_spotlight.png",
+      "filename" : "SmallerFin_80x80.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "BestBites-App-Icon-iPhone.png",
+      "filename" : "SmallerFin_120x120.png",
       "scale" : "2x"
     }
   ],

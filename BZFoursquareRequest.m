@@ -30,31 +30,27 @@
 #define __has_feature(x) 0
 #endif
 
-#if __has_feature(objc_arc)
-#error This file does not support Objective-C Automatic Reference Counting (ARC)
-#endif
-
 #define kAPIv2BaseURL           @"https://api.foursquare.com/v2"
 #define kTimeoutInterval        180.0
 
-static NSString * _BZGetMIMETypeFromFilename(NSString *filename) {
-    NSString *pathExtension = [filename pathExtension];
-    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)pathExtension, NULL);
-    CFStringRef MIMEType = UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType);
-    CFRelease(UTI);
-    return [NSMakeCollectable(MIMEType) autorelease];
-}
+//static NSString * _BZGetMIMETypeFromFilename(NSString *filename) {
+//    NSString *pathExtension = [filename pathExtension];
+//    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)pathExtension, NULL);
+//    CFStringRef MIMEType = UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType);
+//    CFRelease(UTI);
+//    return [NSMakeCollectable(MIMEType) autorelease];
+//}
 
-static NSString * _BZGetMIMEBoundary() {
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    [formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
-    [formatter setDateFormat:@"yyyyMMddHHmmss"];
-    [formatter setCalendar:[[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease]];
-    NSDate *date = [NSDate date];
-    NSTimeInterval ti = [date timeIntervalSinceReferenceDate];
-    NSInteger microSec = floor((ti - floor(ti)) * 1000000.0);
-    return [NSString stringWithFormat:@"Multipart_%@%06ld", [formatter stringFromDate:date], (long)microSec];
-}
+//static NSString * _BZGetMIMEBoundary() {
+//    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+//    [formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease]];
+//    [formatter setDateFormat:@"yyyyMMddHHmmss"];
+//    [formatter setCalendar:[[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease]];
+//    NSDate *date = [NSDate date];
+//    NSTimeInterval ti = [date timeIntervalSinceReferenceDate];
+//    NSInteger microSec = floor((ti - floor(ti)) * 1000000.0);
+//    return [NSString stringWithFormat:@"Multipart_%@%06ld", [formatter stringFromDate:date], (long)microSec];
+//}
 
 @interface BZFoursquareRequest ()
 @property(nonatomic,copy,readwrite) NSString *path;
@@ -89,20 +85,6 @@ static NSString * _BZGetMIMEBoundary() {
         self.delegate = delegate;
     }
     return self;
-}
-
-- (void)dealloc {
-    self.path = nil;
-    self.HTTPMethod = nil;
-    self.parameters = nil;
-    self.delegate = nil;
-    self._delegateQueue = nil;
-    self.connection = nil;
-    self.responseData = nil;
-    self.meta = nil;
-    self.notifications = nil;
-    self.response = nil;
-    [super dealloc];
 }
 
 - (NSOperationQueue *)delegateQueue {
@@ -144,7 +126,7 @@ static NSString * _BZGetMIMEBoundary() {
         NSAssert2(NO, @"*** %s: HTTP %@ method not supported", __PRETTY_FUNCTION__, _HTTPMethod);
         request = nil;
     }
-    self.connection = [[[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO] autorelease];
+    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     NSAssert1(_connection != nil, @"*** %s: connection is nil", __PRETTY_FUNCTION__);
     if (__delegateQueue) {
         [_connection setDelegateQueue:__delegateQueue];
@@ -163,10 +145,15 @@ static NSString * _BZGetMIMEBoundary() {
 #pragma mark -
 #pragma mark NSURLConnectionDelegate
 
+//Commented out because app was crashing here.
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     self.responseData = [NSMutableData data];
-    if ([_delegate respondsToSelector:@selector(requestDidStartLoading:)]) {
-        [_delegate requestDidStartLoading:self];
+    if (_delegate) {
+        if ([_delegate respondsToSelector:@selector(requestDidStartLoading:)]) {
+            [_delegate requestDidStartLoading:self];
+        }
+    } else {
+        NSLog(@"No _delegate for response");
     }
 }
 
@@ -175,9 +162,9 @@ static NSString * _BZGetMIMEBoundary() {
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSString *responseString = [[[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding] autorelease];
+    NSString *responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
     NSError *error = nil;
-    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:[responseString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:&error];
     if (!response) {
         goto bye;
     }
@@ -225,101 +212,20 @@ bye:
             }
         }
         CFStringRef escapedValue = CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)value, NULL, CFSTR("%:/?#[]@!$&'()*+,;="), kCFStringEncodingUTF8);
-        NSMutableString *pair = [[key mutableCopy] autorelease];
+        NSMutableString *pair = [key mutableCopy];
         [pair appendString:@"="];
-        [pair appendString:(NSString *)escapedValue];
+        [pair appendString:(__bridge NSString *)escapedValue];
         [pairs addObject:pair];
         CFRelease(escapedValue);
     }
     NSString *URLString = [kAPIv2BaseURL stringByAppendingPathComponent:_path];
-    NSMutableString *mURLString = [[URLString mutableCopy] autorelease];
+    NSMutableString *mURLString = [URLString mutableCopy];
     [mURLString appendString:@"?"];
     [mURLString appendString:[pairs componentsJoinedByString:@"&"]];
     NSURL *URL = [NSURL URLWithString:mURLString];
     NSLog(@"url = %@", mURLString);
     return [NSURLRequest requestWithURL:URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTimeoutInterval];
 }
-
-- (NSURLRequest *)requestForPOSTMethod {
-    NSString *URLString = [kAPIv2BaseURL stringByAppendingPathComponent:_path];
-    NSURL *URL = [NSURL URLWithString:URLString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:kTimeoutInterval];
-    [request setHTTPMethod:@"POST"];
-    NSString *boundary = _BZGetMIMEBoundary();
-    // header
-    {
-        NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-        NSString *field = @"Content-Type";
-        [request setValue:value forHTTPHeaderField:field];
-    }
-    // body
-    NSMutableData *body = [NSMutableData data];
-    NSMutableDictionary *datas = [NSMutableDictionary dictionary];
-    NSString *dashBoundary = [NSString stringWithFormat:@"--%@", boundary];
-    NSData *dashBoundaryData = [dashBoundary dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *crlfData = [NSData dataWithBytes:"\r\n" length:2];
-    for (NSString *key in _parameters) {
-        NSString *value = _parameters[key];
-        if (![value isKindOfClass:[NSString class]]) {
-            if ([value isKindOfClass:[NSNumber class]]) {
-                value = [value description];
-            } else {
-                if ([value isKindOfClass:[NSData class]]) {
-                    datas[key] = value;
-                }
-                continue;
-            }
-        }
-        // dash-boundary CRLF
-        [body appendData:dashBoundaryData];
-        [body appendData:crlfData];
-        // Content-Disposition header CRLF
-        NSString *header = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"", key];
-        [body appendData:[header dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:crlfData];
-        // Content-Type header CRLF
-        header = @"Content-Type: text/plain; charset=utf-8";
-        [body appendData:[header dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:crlfData];
-        // empty line
-        [body appendData:crlfData];
-        // content
-        NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
-        [body appendData:valueData];
-        // CRLF
-        [body appendData:crlfData];
-    }
-    for (NSString *key in datas) {
-        // dash-boundary CRLF
-        [body appendData:dashBoundaryData];
-        [body appendData:crlfData];
-        // Content-Disposition header CRLF
-        NSString *header = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"",[key stringByDeletingPathExtension], key];
-        [body appendData:[header dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:crlfData];
-        // Content-Type header CRLF
-        header = [NSString stringWithFormat:@"Content-Type: %@", _BZGetMIMETypeFromFilename(key)];
-        [body appendData:[header dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:crlfData];
-        // Content-Transfer-Encoding header CRLF
-        header = @"Content-Transfer-Encoding: binary";
-        [body appendData:[header dataUsingEncoding:NSUTF8StringEncoding]];
-        [body appendData:crlfData];
-        // empty line
-        [body appendData:crlfData];
-        // content
-        [body appendData:datas[key]];
-        // CRLF
-        [body appendData:crlfData];
-    }
-    // dash-boundary "--" CRLF
-    [body appendData:dashBoundaryData];
-    [body appendBytes:"--" length:2];
-    [body appendData:crlfData];
-    [request setHTTPBody:body];
-    return request;
-}
-
 @end
 
 NSString * const BZFoursquareErrorDomain = @"BZFoursquareErrorDomain";

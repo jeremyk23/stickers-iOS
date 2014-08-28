@@ -32,7 +32,7 @@
 @property(nonatomic,copy,readonly) NSString *path;
 @property(nonatomic,copy,readonly) NSString *HTTPMethod;
 @property(nonatomic,copy,readonly) NSDictionary *parameters;
-@property(nonatomic,assign) id<BZFoursquareRequestDelegate> delegate;
+@property(nonatomic,weak) id<BZFoursquareRequestDelegate> delegate;
 @property(nonatomic,retain) NSOperationQueue *delegateQueue NS_AVAILABLE(NA, 6_0);
 // responses
 @property(nonatomic,copy,readonly) NSDictionary *meta;

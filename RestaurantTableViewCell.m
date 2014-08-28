@@ -47,13 +47,13 @@
         self.imageView.frame = CGRectMake( 20.0f, 0.0f, 280.0f, 180.0f);
 //        self.imageView.backgroundColor = [UIColor blackColor];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        UIImageView *gradientOverlay = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_parse2.png"]];
-        gradientOverlay.frame = self.imageView.frame;
-        gradientOverlay.contentMode = UIViewContentModeScaleAspectFit;
+//        UIImageView *gradientOverlay = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_parse2.png"]];
+//        gradientOverlay.frame = self.imageView.frame;
+//        gradientOverlay.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView bringSubviewToFront:self.imageView];
         
-        [self.contentView addSubview:gradientOverlay];
-        [self.contentView bringSubviewToFront:gradientOverlay];
+//        [self.contentView addSubview:gradientOverlay];
+//        [self.contentView bringSubviewToFront:gradientOverlay];
         
         self.avgScoreLabel = [[BBLabel alloc] initWithFrame:CGRectMake(20 + self.imageView.frame.size.width - 80.0f - padding , -10.0f, 80.0f, 80.0f)];
         self.avgScoreLabel.textAlignment = NSTextAlignmentRight;
