@@ -124,6 +124,10 @@
     [fsRequest start];
 }
 
+- (void)requestDidStartLoading:(BZFoursquareRequest *)request {
+    // Do nothing
+}
+
 - (void)requestDidFinishLoading:(BZFoursquareRequest *)request {
     if (self.requestType == FOURSQUARE_MENU) {
         if ([request.response[@"menu"][@"menus"][@"count"] intValue] == 0) {

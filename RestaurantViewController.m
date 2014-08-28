@@ -18,15 +18,19 @@
 #import "FSBasicImageSource.h"
 #import "FSImageViewerViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MapKit/MapKit.h>
 #import "Helpers.h"
 
 #define NUMBER_OF_ASYNCH_CALLS 2
+#define METERS_PER_MILE 1609.344
+
 
 @interface RestaurantViewController ()
 @property (nonatomic, strong) NSArray *restaurantInfo;
 @property (nonatomic, strong) NSArray *topDishes;
 @property (nonatomic, strong) NSArray *awards;
-@property (nonatomic, strong) NSArray *reviews;
+@property (nonatomic, strong) NSMutableArray *displayedReviews;
+@property (nonatomic, strong) NSArray *allReviews;
 @property (nonatomic, strong) FSBasicImageSource *fsImageSource;
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, strong) NSMutableArray *imageCache;
@@ -47,6 +51,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.restaurant = restaurant;
+        self.displayedReviews = [[NSMutableArray alloc] initWithCapacity:5];
         self.request = [[ERequestInterface alloc] init];
         self.request.eDelegate = self;
     }
@@ -74,30 +79,59 @@
         
         self.waitForTableReload = 0;
         
+        CALayer * logoLayer = [self.restaurantLogo layer];
+        [logoLayer setMasksToBounds:YES];
+        [logoLayer setCornerRadius:10.0];
+        self.restaurantLogo.file = self.restaurant[@"restaurantLogo"];
+        [self.restaurantLogo loadInBackground];
+        
         [self.photoGallery registerNib:[UINib nibWithNibName:@"RestaurantPhotoGalleryCell" bundle:nil]  forCellWithReuseIdentifier:@"RestaurantPhotoCell"];
-//        self.photos = [self createPhotosArray];
         self.fsImageSource = [[FSBasicImageSource alloc] initWithImages:[self createPhotosArray]];
         [self.photoGallery reloadData];
         
-//        self.restaurantPhoto.file = self.restaurant[@"restaurantPhoto"];
-//        [self.restaurantPhoto loadInBackground];
+        self.stickersGridView.stickersDelegate = self;
+        
+        self.title = self.restaurant[@"restaurantName"];
         self.restaurantNameLabel.text = self.restaurant[@"restaurantName"];
-        self.restaurantNameLabel.textColor = [UIColor blackColor];
         self.addressLabel.text = self.restaurant[@"address"];
-        [self.view bringSubviewToFront:self.restaurantNameLabel];
+//        [self.view bringSubviewToFront:self.restaurantNameLabel];
         [self detailedRestaurantQuery];
     }
 }
 
-- (NSArray *)createPhotosArray {
-//    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[self.restaurant[@"pictures"] count] + 1];
-//    PFFile *mainRestaurantPhoto = self.restaurant[@"restaurantPhoto"];
-//    if (mainRestaurantPhoto) {
-//        [tempArray addObject:mainRestaurantPhoto];
-//    }
-//    [tempArray addObjectsFromArray:self.restaurant[@"pictures"]];
-//    return (NSArray *)tempArray;
+- (void)zoomInMapWithLatitude:(float)latitude andLongitude:(float)longitude {
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = latitude;
+    zoomLocation.longitude= longitude;
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE, 0.5*METERS_PER_MILE);
+    [self.mapView setRegion:viewRegion animated:YES];
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:zoomLocation];
+    [annotation setTitle:self.restaurantNameLabel.text]; //You can set the subtitle too
+    [self.mapView addAnnotation:annotation];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    self.infoBackdropView.backgroundColor = [UIColor colorWithRed:12.0f/255.0f green:146.0f/255.0f blue:148.0f/255.0f alpha:0.75f];
+    self.restaurantNameLabel.font = [UIFont fontWithName:@"GillSans" size:20.0f];
+    self.addressLabel.font = [UIFont fontWithName:@"GillSans" size:10.0f];
+
+}
+
+- (void)resizeStickerGridWithNumberOfIcons:(NSUInteger)numberOfIcons {
+    if (numberOfIcons == 0) {
+        self.stickerGridViewHeight.constant = 0.0f;
+        [self.view updateConstraints];
+    }
+    if (numberOfIcons < 6) {
+        self.stickerGridViewHeight.constant = 80.0f;
+        [self.view updateConstraints];
+    }
     
+}
+
+- (NSArray *)createPhotosArray {
     NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[self.restaurant[@"pictures"] count] + 1];
     PFFile *photoFile = self.restaurant[@"restaurantPhoto"];
     if (photoFile.url) {
@@ -112,16 +146,54 @@
             }
         }
     }
-    
-//    [tempArray addObjectsFromArray:self.restaurant[@"pictures"]];
+    if (tempArray.count == 0) {
+        [tempArray addObject:[[FSBasicImage alloc] initWithImage:[UIImage imageNamed:@"placeholder-photo.png"]]];
+    }
     return (NSArray *)tempArray;
+}
+
+- (NSArray *)createReviewsArray:(NSMutableArray *)reviews {
+    NSSet *topPublications = [Helpers topPublications];
+    //shuffle review order
+//    NSUInteger count = [reviews count];
+//    for (NSUInteger i = 0; i < count; ++i) {
+//        NSUInteger remainingCount = count - i;
+//        NSUInteger exchangeIndex = i + arc4random_uniform(remainingCount);
+//        [reviews exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+//    }
+    
+    //place national publications at front
+    NSMutableArray *orderedReviewArray = [[NSMutableArray alloc] initWithCapacity:reviews.count];
+    for (PFObject *review in reviews) {
+        if (![review isEqual:[NSNull null]]) {
+            if ([topPublications containsObject:review[@"publicationName"]]) {
+                [orderedReviewArray insertObject:review atIndex:0];
+            } else {
+                [orderedReviewArray addObject:review];
+            }
+        }
+    }
+    return (NSArray *)orderedReviewArray;
+}
+
+- (void)addMoreReviewsToArray {
+    NSUInteger reviewsLeft = self.allReviews.count - self.displayedReviews.count;
+    if (reviewsLeft >= 10) {
+        NSIndexSet *next10 = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(self.displayedReviews.count, 10)];
+        [self.displayedReviews addObjectsFromArray:[self.allReviews objectsAtIndexes:next10]];
+    } else {
+        NSIndexSet *restOfReviews = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, reviewsLeft)];
+        [self.displayedReviews addObjectsFromArray:[self.allReviews objectsAtIndexes:restOfReviews]];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)detailedRestaurantQuery {
     PFQuery *detailQuery = [PFQuery queryWithClassName:@"Restaurant"];
     [detailQuery includeKey:@"topDishes"];
     [detailQuery includeKey:@"awards"];
-    [detailQuery includeKey:@"reviews"];
+    [detailQuery includeKey:@"awards.publication"];
+    [detailQuery includeKey:@"reviews.publication"];
     [detailQuery getObjectInBackgroundWithId:self.restaurant.objectId block:^(PFObject *detailedRestaurant, NSError *error) {
         self.restaurant = detailedRestaurant;
         if (!error) {
@@ -136,11 +208,21 @@
                 sectionCount += 1;
             }
             
-            if ([detailedRestaurant[@"reviews"] count] != 0) {
-                self.reviews = [NSArray arrayWithArray:detailedRestaurant[@"reviews"]];
+            NSUInteger reviewsCount = [detailedRestaurant[@"reviews"] count];
+            if (reviewsCount != 0) {
+                if (reviewsCount > 5) {
+                    self.allReviews = [self createReviewsArray:(NSMutableArray *)detailedRestaurant[@"reviews"]];
+                    NSIndexSet *first5 = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, 5)];
+                    self.displayedReviews = [[NSMutableArray alloc] initWithArray:[self.allReviews objectsAtIndexes:first5]];
+                } else {
+                    self.allReviews = [self createReviewsArray:(NSMutableArray *)detailedRestaurant[@"reviews"]];
+                    self.displayedReviews = (NSMutableArray *)self.allReviews;
+                }
                 self.reviewsSection = sectionCount;
                 sectionCount += 1;
             }
+            
+            [self.stickersGridView displayReviewIconsWithReviews:detailedRestaurant[@"reviews"] andAwards:detailedRestaurant[@"awards"]];
             self.numberOfSections = sectionCount;
             [self updateWaitForReloadTable];
         } else {
@@ -162,6 +244,7 @@
     }
     [arrayToFilterOutNils addObject:moreInfo];
     self.restaurantInfo = [[NSArray alloc] initWithArray:(NSArray *)arrayToFilterOutNils];
+    self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@", venue[@"location"][@"address"], telephoneNumber];
     [self updateWaitForReloadTable];
 }
 
@@ -206,8 +289,14 @@
     }
     
     else if (section == self.reviewsSection) {
-        if (self.reviews != 0) {
-            return self.reviews.count;
+        NSUInteger displayedReviewsCount = self.displayedReviews.count;
+        if (self.displayedReviews != 0) {
+            if (self.allReviews.count == displayedReviewsCount) {
+                return displayedReviewsCount; //all reviews are displayed
+            } else {
+                return self.displayedReviews.count + 1; // +1 for view more cell
+            }
+            
         } else {
             return 0;
         }
@@ -241,49 +330,6 @@
 
 }
 
-/*
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CGFloat screenWidth = self.view.frame.size.width;
-    switch (section) {
-            //view menu
-        if (section == self.menuSection) {
-            UIView *menuHeader = [[UIView alloc] initWithFrame:CGRectMake(-30, 0, screenWidth, 30.0f)];
-            UILabel *menuLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
-            menuHeader.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
-            menuLabel.text = @"Menu";
-            [menuHeader addSubview:menuLabel];
-            return menuHeader;
-            break;
-        }
-            
-            //top dishes
-        case 1: {
-            UIView *topDishesHeader = [[UIView alloc] initWithFrame:CGRectMake(-30, 0, screenWidth, 30.0f)];
-            UILabel *topDishesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
-            topDishesLabel.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
-            topDishesLabel.text = @"Top Dishes";
-            [topDishesHeader addSubview:topDishesLabel];
-            return topDishesHeader;
-            break;
-        }
-            //reviews
-        case 2: {
-            UIView *reviewsHeader = [[UIView alloc] initWithFrame:CGRectMake(-30, 0, screenWidth, 30.0f)];
-            UILabel *reviewsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
-            reviewsLabel.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
-            reviewsLabel.text = @"Reviews";
-            [reviewsHeader addSubview:reviewsLabel];
-            return reviewsHeader;
-            break;
-        }
-        default: {
-            UIView *dummyHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 30.0f)];
-            return dummyHeader;
-            break;
-        }
-    }
-}
-*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *infoCell = @"infoCell";
     static NSString *topDishesCell = @"topDishesCell";
@@ -335,13 +381,19 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reviewCell];
         }
-        if (self.reviews[indexPath.row] != [NSNull null]) {
-            cell.textLabel.text = self.reviews[indexPath.row][@"publicationName"];
-            cell.detailTextLabel.text = self.reviews[indexPath.row][@"headline"];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (indexPath.row == self.displayedReviews.count) {
+            cell.textLabel.text = @"View More Reviews...";
+            cell.detailTextLabel.text = @"";
+            cell.accessoryType = UITableViewCellAccessoryNone;
         } else {
-            cell.textLabel.text = @"Sorry!";
-            cell.detailTextLabel.text = @"There was an error retrieving this review.";
+            if (self.displayedReviews[indexPath.row] != [NSNull null]) {
+                cell.textLabel.text = self.displayedReviews[indexPath.row][@"publicationName"];
+                cell.detailTextLabel.text = self.displayedReviews[indexPath.row][@"headline"];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else {
+                cell.textLabel.text = @"Sorry!";
+                cell.detailTextLabel.text = @"There was an error retrieving this review.";
+            }
         }
         
     } else {
@@ -364,13 +416,12 @@
     }
     
     else if (indexPath.section == self.reviewsSection) {
-        UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
-        NSURL *url = [NSURL URLWithString:self.reviews[indexPath.row][@"url"]];
-        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-        [webView loadRequest:requestObj];
-        UIViewController *webController = [[UIViewController alloc] init];
-        [webController.view addSubview:webView];
-        [self.navigationController pushViewController:webController animated:YES];
+        if (indexPath.row == self.displayedReviews.count) {
+            [self addMoreReviewsToArray];
+        }
+        else {
+            [self pushWebViewWithURL:[NSURL URLWithString:self.displayedReviews[indexPath.row][@"url"]]];
+        }
     }
 }
 
@@ -392,12 +443,17 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RestaurantPhotoGalleryCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"RestaurantPhotoCell" forIndexPath:indexPath];
     NSURL *pictureURL = [self.fsImageSource objectAtIndexedSubscript:indexPath.row].URL;
-    [cell.imageView sd_setImageWithURL:pictureURL
-                   placeholderImage:[UIImage imageNamed:@"placeholder-photo.png"]];
-    [cell.imageView sd_setImageWithURL:pictureURL placeholderImage:[UIImage imageNamed:@"placeholder-photo.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        cell.imageView.image = [Helpers imageByScalingAndCroppingForSize:cell.imageView.frame.size withImage:image];
-    }];
-    return cell;
+    if (!pictureURL) {
+        cell.imageView.image = [self.fsImageSource objectAtIndexedSubscript:indexPath.row].image;
+    } else {
+        [cell.imageView sd_setImageWithURL:pictureURL
+                          placeholderImage:[UIImage imageNamed:@"placeholder-photo.png"]];
+        [cell.imageView sd_setImageWithURL:pictureURL placeholderImage:[UIImage imageNamed:@"placeholder-photo.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            cell.imageView.image = [Helpers imageByScalingAndCroppingForSize:cell.imageView.frame.size withImage:image];
+        }];
+
+    }
+        return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -409,7 +465,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(320.0f, 180.0f);
+    return collectionView.frame.size;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
@@ -423,13 +479,23 @@
 //    return 44;
 //}
 
+#pragma mark - StickersCollectionView
+- (void)didSelectLogoWithURL:(NSURL *)url {
+    [self pushWebViewWithURL:url];
+}
 
+- (void)numberOfPublicationsAndAwardsWithIcons:(NSUInteger)numberOfIcons {
+    [self resizeStickerGridWithNumberOfIcons:numberOfIcons];
+}
+#pragma mark - ERequestInterface
 - (void)didFinishLoadingFoursquare:(NSDictionary *)response {
+    NSDictionary *TEST = response[@"venue"][@"location"];
+    NSDictionary *TEST2 = response[@"venue"][@"location"][@"lat"];
+    [self zoomInMapWithLatitude:[response[@"venue"][@"location"][@"lat"] floatValue] andLongitude:[response[@"venue"][@"location"][@"lng"] floatValue]];
     [self configureRestaurantInfo:response[@"venue"]];
 }
 
 - (void)didFinishLoadingLocu:(NSDictionary *)response {
-    
     
 }
 
@@ -442,5 +508,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)pushWebViewWithURL:(NSURL *)url {
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:requestObj];
+    UIViewController *webController = [[UIViewController alloc] init];
+    [webController.view addSubview:webView];
+    [self.navigationController pushViewController:webController animated:YES];
+}
 
 @end

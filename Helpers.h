@@ -11,5 +11,11 @@
 @interface Helpers : NSObject
 
 + (UIImage*)imageByScalingAndCroppingForSize:(CGSize)targetSize withImage:(UIImage *)photo;
++ (NSSet *)nationalPublications;
++ (NSSet *)topPublications;
+
+//Use only for admin-y purposes
++ (void)printNationalPublications;
++ (void)printAllPublications;
 
 @end

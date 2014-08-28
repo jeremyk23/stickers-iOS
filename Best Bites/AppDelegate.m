@@ -29,6 +29,13 @@
     
     AFViewController *homeVC = [[AFViewController alloc] init];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:homeVC];
+//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:14.0f/255.0f green:166.0f/155.0f blue:169.0f/255.0f alpha:1.0f];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:12.0f/255.0f green:146.0f/255.0f blue:148.0f/255.0f alpha:1.0f];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIFont fontWithName:@"GillSans" size:21],
+      NSFontAttributeName, [UIColor whiteColor],NSForegroundColorAttributeName, nil]];
+//    self.navigationController.navigationBar.translucent = NO;
     self.window.rootViewController = self.navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

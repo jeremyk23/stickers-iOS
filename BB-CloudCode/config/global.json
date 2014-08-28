@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Best Bites": {
+            "applicationId": "ORu5DTWq9gk7DYBNKb9SDlni9FiKkfyYBFee99YM", 
+            "masterKey": "csxEVUWcAUDdzDiqH8Do8esztHWYSx4FA4GixYZx"
+        }, 
+        "_default": {
+            "link": "Best Bites"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}

@@ -69,8 +69,13 @@
 		46FD407719A6F11D00A44AD6 /* AFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FD407619A6F11D00A44AD6 /* AFTableViewCell.m */; };
 		D41733AE19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */; };
 		D41733AF19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */; };
+		D499572819AC2B1B00CC3E93 /* publication-names.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D499572719AC2B1B00CC3E93 /* publication-names.rtf */; };
 		D4C7982519AB8826003D9D53 /* Common Issues.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D4C7982419AB8826003D9D53 /* Common Issues.rtf */; };
 		D4C7982819AB9159003D9D53 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C7982719AB9159003D9D53 /* Helpers.m */; };
+		D4E845B819AD41A3003F1864 /* MosaicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E845AF19AD41A3003F1864 /* MosaicLayout.m */; };
+		D4E845B919AD41A3003F1864 /* MosaicData.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E845B219AD41A3003F1864 /* MosaicData.m */; };
+		D4E845BA19AD41A3003F1864 /* MosaicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E845B719AD41A3003F1864 /* MosaicCell.m */; };
+		D4E845BD19AD6BDF003F1864 /* StickersCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E845BC19AD6BDF003F1864 /* StickersCollectionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,30 +198,19 @@
 		D41733AB19AADDCE00F62861 /* RestaurantPhotoGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantPhotoGalleryCell.h; sourceTree = "<group>"; };
 		D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantPhotoGalleryCell.m; sourceTree = "<group>"; };
 		D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantPhotoGalleryCell.xib; sourceTree = "<group>"; };
+		D499572719AC2B1B00CC3E93 /* publication-names.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "publication-names.rtf"; sourceTree = "<group>"; };
 		D4C7982419AB8826003D9D53 /* Common Issues.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Common Issues.rtf"; sourceTree = "<group>"; };
 		D4C7982619AB9159003D9D53 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		D4C7982719AB9159003D9D53 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
-		D4C7982A19ABA482003D9D53 /* FSBasicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImage.h; sourceTree = "<group>"; };
-		D4C7982B19ABA482003D9D53 /* FSBasicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImage.m; sourceTree = "<group>"; };
-		D4C7982C19ABA482003D9D53 /* FSBasicImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBasicImageSource.h; sourceTree = "<group>"; };
-		D4C7982D19ABA482003D9D53 /* FSBasicImageSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBasicImageSource.m; sourceTree = "<group>"; };
-		D4C7982E19ABA482003D9D53 /* FSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImage.h; sourceTree = "<group>"; };
-		D4C7982F19ABA482003D9D53 /* FSImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageLoader.h; sourceTree = "<group>"; };
-		D4C7983019ABA482003D9D53 /* FSImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageLoader.m; sourceTree = "<group>"; };
-		D4C7983119ABA482003D9D53 /* FSImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageScrollView.h; sourceTree = "<group>"; };
-		D4C7983219ABA482003D9D53 /* FSImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageScrollView.m; sourceTree = "<group>"; };
-		D4C7983319ABA482003D9D53 /* FSImageSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageSource.h; sourceTree = "<group>"; };
-		D4C7983419ABA482003D9D53 /* FSImageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageTitleView.h; sourceTree = "<group>"; };
-		D4C7983519ABA482003D9D53 /* FSImageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageTitleView.m; sourceTree = "<group>"; };
-		D4C7983619ABA482003D9D53 /* FSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageView.h; sourceTree = "<group>"; };
-		D4C7983719ABA482003D9D53 /* FSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageView.m; sourceTree = "<group>"; };
-		D4C7983819ABA482003D9D53 /* FSImageViewer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FSImageViewer-Prefix.pch"; sourceTree = "<group>"; };
-		D4C7983919ABA482003D9D53 /* FSImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewer.h; sourceTree = "<group>"; };
-		D4C7983A19ABA482003D9D53 /* FSImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSImageViewerViewController.h; sourceTree = "<group>"; };
-		D4C7983B19ABA482003D9D53 /* FSImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSImageViewerViewController.m; sourceTree = "<group>"; };
-		D4C7983C19ABA482003D9D53 /* FSPlaceholderImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlaceholderImages.h; sourceTree = "<group>"; };
-		D4C7983D19ABA482003D9D53 /* FSPlaceholderImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlaceholderImages.m; sourceTree = "<group>"; };
-		D4C7983E19ABA482003D9D53 /* FSTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTitleView.h; sourceTree = "<group>"; };
+		D4E845AE19AD41A3003F1864 /* MosaicLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayout.h; sourceTree = "<group>"; };
+		D4E845AF19AD41A3003F1864 /* MosaicLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicLayout.m; sourceTree = "<group>"; };
+		D4E845B119AD41A3003F1864 /* MosaicData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicData.h; sourceTree = "<group>"; };
+		D4E845B219AD41A3003F1864 /* MosaicData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicData.m; sourceTree = "<group>"; };
+		D4E845B419AD41A3003F1864 /* MosaicLayoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicLayoutDelegate.h; sourceTree = "<group>"; };
+		D4E845B619AD41A3003F1864 /* MosaicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosaicCell.h; sourceTree = "<group>"; };
+		D4E845B719AD41A3003F1864 /* MosaicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosaicCell.m; sourceTree = "<group>"; };
+		D4E845BB19AD6BDF003F1864 /* StickersCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickersCollectionView.h; sourceTree = "<group>"; };
+		D4E845BC19AD6BDF003F1864 /* StickersCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickersCollectionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46710EC9197167110024CECD /* MapKit.framework in Frameworks */,
 				46710EDF1971676A0024CECD /* libz.dylib in Frameworks */,
 				46710ED8197167620024CECD /* Foundation.framework in Frameworks */,
 				46710ED9197167620024CECD /* MobileCoreServices.framework in Frameworks */,
@@ -236,7 +231,6 @@
 				46710ECF197167300024CECD /* CFNetwork.framework in Frameworks */,
 				46710ED0197167300024CECD /* CoreGraphics.framework in Frameworks */,
 				46710ED1197167300024CECD /* CoreLocation.framework in Frameworks */,
-				46710EC9197167110024CECD /* MapKit.framework in Frameworks */,
 				3EAC168AF87D4C888132DB9C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +297,7 @@
 				46710F5B19718C940024CECD /* BestBites-PrefixHeader.pch */,
 				46710EAD197166840024CECD /* main.m */,
 				D4C7982419AB8826003D9D53 /* Common Issues.rtf */,
+				D499572719AC2B1B00CC3E93 /* publication-names.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -491,6 +486,8 @@
 				D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */,
 				D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */,
 				46AF799D197BF7B800730F91 /* Foursquare Restaurant */,
+				D4E845BB19AD6BDF003F1864 /* StickersCollectionView.h */,
+				D4E845BC19AD6BDF003F1864 /* StickersCollectionView.m */,
 			);
 			name = Restaurant;
 			sourceTree = "<group>";
@@ -543,7 +540,7 @@
 		46710F5A19718AE30024CECD /* Libraries And Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D4C7982919ABA482003D9D53 /* FSImageViewer */,
+				D4E845AC19AD41A3003F1864 /* MosaicLayout */,
 				46710F5919718AD80024CECD /* PureLayout */,
 				46710EE0197168720024CECD /* Parse.framework */,
 				46710EDE1971676A0024CECD /* libz.dylib */,
@@ -606,32 +603,50 @@
 			name = CategoriesView;
 			sourceTree = "<group>";
 		};
-		D4C7982919ABA482003D9D53 /* FSImageViewer */ = {
+		D4E845AC19AD41A3003F1864 /* MosaicLayout */ = {
 			isa = PBXGroup;
 			children = (
-				D4C7982A19ABA482003D9D53 /* FSBasicImage.h */,
-				D4C7982B19ABA482003D9D53 /* FSBasicImage.m */,
-				D4C7982C19ABA482003D9D53 /* FSBasicImageSource.h */,
-				D4C7982D19ABA482003D9D53 /* FSBasicImageSource.m */,
-				D4C7982E19ABA482003D9D53 /* FSImage.h */,
-				D4C7982F19ABA482003D9D53 /* FSImageLoader.h */,
-				D4C7983019ABA482003D9D53 /* FSImageLoader.m */,
-				D4C7983119ABA482003D9D53 /* FSImageScrollView.h */,
-				D4C7983219ABA482003D9D53 /* FSImageScrollView.m */,
-				D4C7983319ABA482003D9D53 /* FSImageSource.h */,
-				D4C7983419ABA482003D9D53 /* FSImageTitleView.h */,
-				D4C7983519ABA482003D9D53 /* FSImageTitleView.m */,
-				D4C7983619ABA482003D9D53 /* FSImageView.h */,
-				D4C7983719ABA482003D9D53 /* FSImageView.m */,
-				D4C7983819ABA482003D9D53 /* FSImageViewer-Prefix.pch */,
-				D4C7983919ABA482003D9D53 /* FSImageViewer.h */,
-				D4C7983A19ABA482003D9D53 /* FSImageViewerViewController.h */,
-				D4C7983B19ABA482003D9D53 /* FSImageViewerViewController.m */,
-				D4C7983C19ABA482003D9D53 /* FSPlaceholderImages.h */,
-				D4C7983D19ABA482003D9D53 /* FSPlaceholderImages.m */,
-				D4C7983E19ABA482003D9D53 /* FSTitleView.h */,
+				D4E845AD19AD41A3003F1864 /* Controllers */,
+				D4E845B019AD41A3003F1864 /* Entities */,
+				D4E845B319AD41A3003F1864 /* Protocols */,
+				D4E845B519AD41A3003F1864 /* Views */,
 			);
-			path = FSImageViewer;
+			path = MosaicLayout;
+			sourceTree = "<group>";
+		};
+		D4E845AD19AD41A3003F1864 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4E845AE19AD41A3003F1864 /* MosaicLayout.h */,
+				D4E845AF19AD41A3003F1864 /* MosaicLayout.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D4E845B019AD41A3003F1864 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D4E845B119AD41A3003F1864 /* MosaicData.h */,
+				D4E845B219AD41A3003F1864 /* MosaicData.m */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D4E845B319AD41A3003F1864 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D4E845B419AD41A3003F1864 /* MosaicLayoutDelegate.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D4E845B519AD41A3003F1864 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4E845B619AD41A3003F1864 /* MosaicCell.h */,
+				D4E845B719AD41A3003F1864 /* MosaicCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -718,6 +733,7 @@
 			files = (
 				46710F4A1971883F0024CECD /* gradient_parse2.png in Resources */,
 				46710EB3197166840024CECD /* Images.xcassets in Resources */,
+				D499572819AC2B1B00CC3E93 /* publication-names.rtf in Resources */,
 				D41733AF19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib in Resources */,
 				469B5AD4198733B900738BF8 /* placeholder-photo.png in Resources */,
 				D4C7982519AB8826003D9D53 /* Common Issues.rtf in Resources */,
@@ -776,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46710F0B197172070024CECD /* BZFoursquareRequest.m in Sources */,
+				D4E845BD19AD6BDF003F1864 /* StickersCollectionView.m in Sources */,
 				46710F2C197185620024CECD /* ParseRestaurant.m in Sources */,
 				46710EF8197171D40024CECD /* BBLabel.m in Sources */,
 				46710F2B197185620024CECD /* RestaurantModel.m in Sources */,
@@ -796,6 +813,7 @@
 				46710F07197172070024CECD /* ERequestInterface.m in Sources */,
 				46710F0C197172070024CECD /* EFoursquareParser.m in Sources */,
 				46710EEA19716ED20024CECD /* FrontPageRestaurantsQTVC.m in Sources */,
+				D4E845B819AD41A3003F1864 /* MosaicLayout.m in Sources */,
 				46710F2D197185620024CECD /* FoursquareRestaurant.m in Sources */,
 				46710F45197187C90024CECD /* RestaurantTableViewCell.m in Sources */,
 				467B916119A7BD1600EB847C /* BBCategoryCell.m in Sources */,
@@ -809,12 +827,14 @@
 				46710F25197185620024CECD /* Menu.m in Sources */,
 				46710F42197187970024CECD /* MenuItemTableViewCell.m in Sources */,
 				46AF7999197B536100730F91 /* FoursquareRestaurantViewController.m in Sources */,
+				D4E845BA19AD41A3003F1864 /* MosaicCell.m in Sources */,
 				46710EAE197166840024CECD /* main.m in Sources */,
 				46710F0A197172070024CECD /* BZFoursquare.m in Sources */,
 				46710F5619718AD20024CECD /* ALView+PureLayout.m in Sources */,
 				46710EE4197169570024CECD /* HomeViewController.m in Sources */,
 				46FD407719A6F11D00A44AD6 /* AFTableViewCell.m in Sources */,
 				46710F391971877B0024CECD /* RestaurantViewController.m in Sources */,
+				D4E845B919AD41A3003F1864 /* MosaicData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

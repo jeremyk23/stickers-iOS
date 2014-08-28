@@ -163,10 +163,15 @@ static NSString * _BZGetMIMEBoundary() {
 #pragma mark -
 #pragma mark NSURLConnectionDelegate
 
+//Commented out because app was crashing here.
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     self.responseData = [NSMutableData data];
-    if ([_delegate respondsToSelector:@selector(requestDidStartLoading:)]) {
-        [_delegate requestDidStartLoading:self];
+    if (_delegate) {
+        if ([_delegate respondsToSelector:@selector(requestDidStartLoading:)]) {
+            [_delegate requestDidStartLoading:self];
+        }
+    } else {
+        NSLog(@"No _delegate for response");
     }
 }
 

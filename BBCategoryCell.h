@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 
 @interface BBCategoryCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIView *nameBackdropLabel;
 @property (weak, nonatomic) IBOutlet BBLabel *restaurantNameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *restaurantPhoto;
 

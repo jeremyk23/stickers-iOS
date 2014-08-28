@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <objects>
@@ -15,7 +16,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9if-c8-VPo" customClass="PFImageView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="245"/>
                     </imageView>
-                    <view alpha="0.74999999999999989" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Xq-V5-e32">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Xq-V5-e32">
                         <rect key="frame" x="0.0" y="190" width="320" height="55"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PT-Ju-aVR" customClass="BBLabel">
@@ -50,6 +51,7 @@
                 <constraint firstAttribute="trailing" secondItem="9if-c8-VPo" secondAttribute="trailing" id="shM-OF-EIc"/>
             </constraints>
             <connections>
+                <outlet property="nameBackdropLabel" destination="1Xq-V5-e32" id="gpG-S8-zf1"/>
                 <outlet property="restaurantNameLabel" destination="7PT-Ju-aVR" id="zdY-ZY-YNr"/>
                 <outlet property="restaurantPhoto" destination="9if-c8-VPo" id="sKc-aQ-5Wa"/>
             </connections>
