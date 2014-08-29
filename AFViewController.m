@@ -11,7 +11,9 @@
 #import "AFTableViewCell.h"
 #import "Constants.h"
 #import "RestaurantCategory.h"
-#import "BBCategoryCell.h"
+#import "RestaurantCollectionViewCell.h"
+#import "CategoriesData.h"
+#import "FrontPageDataSource.h"
 #import "BBLabel.h"
 #import "Helpers.h"
 
@@ -19,7 +21,7 @@
 
 @interface AFViewController ()
 
-@property (nonatomic, strong) NSArray *categoriesArray;
+@property (nonatomic, strong) FrontPageDataSource *fpDataSource;
 @property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
 
 @end
@@ -29,6 +31,7 @@
 -(void)loadView
 {
     [super loadView];
+    /*
     PFQuery *categoryQuery = [PFQuery queryWithClassName:@"Restaurant"];
     categoryQuery.limit = 50;
     NSArray *objects = [categoryQuery findObjects];
@@ -50,8 +53,10 @@
         rc.restaurants = categories[key];
         [tempCategoriesArray addObject:rc];
     }
+     */
     
-    self.categoriesArray = [NSArray arrayWithArray:(NSArray *)tempCategoriesArray];
+    
+    self.fpDataSource = [[FrontPageDataSource alloc] initAndConstructQuery];
     
     self.contentOffsetDictionary = [NSMutableDictionary dictionary];
 }
@@ -112,7 +117,7 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    BBCategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
+    RestaurantCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
     
     RestaurantCategory *rc = self.categoriesArray[collectionView.tag];
     cell.restaurantPhoto.image = [UIImage imageNamed:@"placeholder-photo.png"];

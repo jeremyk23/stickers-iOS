@@ -7,9 +7,10 @@
 //
 
 #import "AFTableViewCell.h"
-#import "BBCategoryCell.h"
+#import "RestaurantCollectionViewCell.h"
 
 @implementation AFTableViewCell
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -27,25 +28,35 @@
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.collectionView setPagingEnabled:YES];
-    self.categoryLabel = [[BBLabel alloc] init];
-    self.categoryLabel.frame = CGRectMake(0.0f, 212.0f, 320.0f, 30.0f);
-    self.categoryLabel.textColor = [UIColor whiteColor];
-    self.categoryLabel.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:self.categoryLabel];
-    
+    self.categoryLabel.alpha = 0.0f;
+    self.transparencyView.alpha = 0.0f;
     [self.contentView addSubview:self.collectionView];
-    
-    
-
     return self;
 }
 
--(void)layoutSubviews
-{
+-(void)layoutSubviews {
     [super layoutSubviews];
-    
     self.collectionView.frame = self.contentView.bounds;
-    
+}
+
+- (void)displayCategoryLabel {
+    if (!self.categoryLabel) {
+        self.categoryLabel = [[BBLabel alloc] init];
+        self.categoryLabel.frame = CGRectMake(0.0f, 212.0f, 320.0f, 30.0f);
+        self.categoryLabel.textColor = [UIColor whiteColor];
+        self.categoryLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.categoryLabel];
+    }
+    [UIView animateWithDuration:0.75
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         [self.categoryLabel setAlpha:1.0];
+                         [self.transparencyView setAlpha:0.75];
+                     }
+                     completion:^(BOOL finished) {
+                         // Completion Block
+                     }];
 }
 
 -(void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource, UICollectionViewDelegate>)dataSourceDelegate index:(NSInteger)index
