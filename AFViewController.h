@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FrontPageDataSource.h"
 
-@interface AFViewController : UITableViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface AFViewController : UITableViewController <UICollectionViewDataSource, UICollectionViewDelegate, FrontPageDataSourceDelegate>
 
 @end

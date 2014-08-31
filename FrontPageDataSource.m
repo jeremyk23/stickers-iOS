@@ -8,8 +8,19 @@
 
 #import "FrontPageDataSource.h"
 #import "CategoriesData.h"
-#import "RestaurantCategoryCellData.m"
+#import "RestaurantCategory.h"
+#import "FPCategoryGroup.h"
+#import "RestaurantCategoryCellData.h"
+#import "AFTableViewCell.h"
+#import "SingleRestaurantTableViewCell.h"
+#import "Constants.h"
 #import <Parse/Parse.h>
+
+# define NUMBER_OF_ASYNC_CALLS 1
+
+@interface FrontPageDataSource ()
+@property int numberOfAsyncCallsFinished;
+@end
 
 @implementation FrontPageDataSource
 
@@ -38,17 +49,19 @@
                 CategoriesData *cData = [[CategoriesData alloc] initWithCategoryObject:category];
                 [firstCellCategories addObject:cData];
             }
-            NSIndexSet *frontOfArray = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, firstCellCategories.count)];
             //NSMutableArray is not thread safe so must lock it.
             NSLock *mutableArrayLock = [[NSLock alloc] init];
             [mutableArrayLock lock];
-            [self.elements insertObjects:(NSArray *)firstCellCategories atIndexes:frontOfArray];
+            FPCategoryGroup *categoryGroup = [[FPCategoryGroup alloc] initWithItems:(NSArray *)firstCellCategories andGroupType:kCategoriesOnlyGroup];
+            [self.elements insertObject:categoryGroup atIndex:0];
             [mutableArrayLock unlock];
+            self.numberOfAsyncCallsFinished += 1;
+            [self checkForUpdate];
         } else {
             NSLog(@"Error with categoriesQuery: %@", error);
         }
     }];
-    
+    /*
     PFQuery *restaurantQuery = [PFQuery queryWithClassName:@"Restaurant"];
     [restaurantQuery orderByDescending:@"createdAt"];
     restaurantQuery.limit = 10;
@@ -58,14 +71,85 @@
             NSMutableArray *tempRCCDArray = [[NSMutableArray alloc] initWithCapacity:restaurants.count];
             for (PFObject *restaurant in restaurants) {
                 RestaurantCategoryCellData *rData = [[RestaurantCategoryCellData alloc] initWithRestaurant:restaurant];
-                [tempRCCDArray addObject:rData];
+                FPCategoryGroup *categoryGroup = [[FPCategoryGroup alloc] initWithItems:rData.restaurantPictures andGroupType:kSingleRestaurantGroup];
+                categoryGroup.cellData = rData;
+                [tempRCCDArray addObject:categoryGroup];
             }
             NSLock *mutableArrayLock = [[NSLock alloc] init];
             [mutableArrayLock lock];
             [self.elements addObjectsFromArray:tempRCCDArray];
             [mutableArrayLock unlock];
+            self.numberOfAsyncCallsFinished += 1;
+            [self checkForUpdate];
         }
     }];
+     */
 }
+
+- (void)checkForUpdate {
+    if (self.numberOfAsyncCallsFinished == NUMBER_OF_ASYNC_CALLS) {
+        if (self.fpDatasourceDelegate && [self.fpDatasourceDelegate respondsToSelector:@selector(shouldReloadTable)]) {
+            [self.fpDatasourceDelegate shouldReloadTable];
+        }
+    }
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView configureCellForIndexPath:(NSIndexPath *)indexPath {
+    NSLock *mutableArrayLock = [[NSLock alloc] init];
+    [mutableArrayLock lock];
+    FPCategoryGroup *categoryGroup = self.elements[indexPath.row];
+    [mutableArrayLock unlock];
+    if (categoryGroup.groupType == kSingleRestaurantGroup) {
+        static NSString *RestaurantCellIdentifier = @"RestaurantCellIdentifier";
+        SingleRestaurantTableViewCell *cell = (SingleRestaurantTableViewCell *)[tableView dequeueReusableCellWithIdentifier:RestaurantCellIdentifier];
+        if (!cell) {
+            cell = [[SingleRestaurantTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:RestaurantCellIdentifier];
+        }
+        [cell.collectionView registerNib:[UINib nibWithNibName:@"RestaurantCategoryCollectionViewCell" bundle:[NSBundle mainBundle]]
+              forCellWithReuseIdentifier:RestaurantCollectionViewCellIdentifier];
+        RestaurantCategoryCellData *rcData = (RestaurantCategoryCellData *)categoryGroup.cellData;
+        cell.categoryLabel.text = rcData.address;
+        cell.restaurantNameLabel.text = rcData.restaurantName;
+        return cell;
+    }
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    AFTableViewCell *cell = (AFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[AFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    
+    if (categoryGroup.groupType == kCategoriesOnlyGroup) {
+        [cell.collectionView registerNib:[UINib nibWithNibName:@"CategoryCollectionViewCell" bundle:[NSBundle mainBundle]]
+              forCellWithReuseIdentifier:CategoryCollectionViewCellIdentifier];
+    } else if (categoryGroup.groupType == kCategoryWithRestaurantGroup) {
+        [cell.collectionView registerNib:[UINib nibWithNibName:@"RestaurantCategoryCollectionViewCell" bundle:[NSBundle mainBundle]]
+              forCellWithReuseIdentifier:RestaurantCollectionViewCellIdentifier];
+        CategoriesData *cData = (CategoriesData *)categoryGroup.cellData;
+        cell.categoryLabel.text = cData.categoryTitle;
+        [cell displayCategoryLabel];
+    }
+    return cell;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView configureItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLock *mutableArrayLock = [[NSLock alloc] init];
+    [mutableArrayLock lock];
+    FPCategoryGroup *fpCategoryGroup = self.elements[collectionView.tag];
+    [mutableArrayLock unlock];
+    CategoryGroupType groupType = fpCategoryGroup.groupType;
+    UICollectionViewCell *cell;
+    if (groupType == kCategoriesOnlyGroup) {
+        cell = [fpCategoryGroup.items[indexPath.row] collectionView:collectionView representationAsCellForItemAtIndexPath:indexPath];
+    }
+    return cell;
+}
+
+//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//    
+//    
+//}
+
 
 @end

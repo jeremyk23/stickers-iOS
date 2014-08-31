@@ -6,11 +6,14 @@
 //  Copyright (c) 2014 Best Bites. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-@class PFFile;
-@class PFObject;
-@class PFQuery;
+//// #import <Foundation/Foundation.h>
+#import "AFTableViewCell.h"
+#import "FrontPageDataSource.h"
+#import "Helpers.h"
+#import <Parse/Parse.h>
 
 @interface FrontPageCategoryData : NSObject
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView representationAsCellForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

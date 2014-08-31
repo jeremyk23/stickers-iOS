@@ -8,7 +8,7 @@
 
 @protocol ERequestInterfaceDelegate;
 
-#import <Foundation/Foundation.h>
+// #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BZFoursquare.h"
 #import "BZFoursquareRequest.h"

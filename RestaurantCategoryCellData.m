@@ -7,6 +7,7 @@
 //
 
 #import "RestaurantCategoryCellData.h"
+#import "Helpers.h"
 #import <Parse/Parse.h>
 
 @implementation RestaurantCategoryCellData
@@ -14,11 +15,12 @@
 - (id)initWithRestaurant:(PFObject *)restaurant {
     self = [super init];
     if (self) {
-        self.restaurantPicture = restaurant[@"restaurantPhoto"];
+        self.restaurantPictures = [Helpers createPhotosArray:restaurant];
         self.parseObjectId = restaurant.objectId;
         self.restaurantName = restaurant[@"restaurantName"];
         self.restaurantCuisine = restaurant[@"cuisine"];
-        self.price = [restaurant[@"price"] intValue];
+        self.address = restaurant[@"address"];
+        self.price = !([restaurant[@"price"] isEqual:[NSNull null]]) ? [restaurant[@"price"] intValue] : 0;
         self.reviewCount = [restaurant[@"reviews"] count];
         self.awardCount = [restaurant[@"awards"] count];
     }

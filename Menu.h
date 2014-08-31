@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Entree. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+// #import <Foundation/Foundation.h>
 #import "Menu_SectionTitle.h"
 #import "Menu_SectionDescr.h"
 #import "Menu_Dish.h"

@@ -60,5 +60,9 @@ NSString * const kFeaturedDishesCityKey = @"city";
 NSString * const kFeaturedDishesStateKey = @"state";
 NSString * const kFeaturedDishes_featuredDishes = @"featuredDishes";
 
+////Front Page Categories
+//NSString * const kCategoriesGroup = @"fpCategoriesGroup";
+//NSString * const kCategoryWithRestaurantGroup = @"fpCategoryWithRestaurantGroup";
+
 @end
 

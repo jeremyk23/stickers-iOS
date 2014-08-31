@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Entree. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+// #import <Foundation/Foundation.h>
 @class Menu;
 @interface EFoursquareParser : NSObject
 

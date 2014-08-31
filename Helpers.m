@@ -8,8 +8,30 @@
 
 #import "Helpers.h"
 #import <Parse/Parse.h>
+#import "FSBasicImage.h"
 
 @implementation Helpers
+
++ (NSArray *)createPhotosArray:(PFObject *)restaurant {
+    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[restaurant[@"pictures"] count] + 1];
+    PFFile *photoFile = restaurant[@"restaurantPhoto"];
+    if (photoFile.url) {
+        NSURL *mainRestaurantPhotoURL = [[NSURL alloc] initWithString:photoFile.url];
+        [tempArray addObject:[[FSBasicImage alloc] initWithImageURL:mainRestaurantPhotoURL]];
+    }
+    for (NSString *photoURLString in restaurant[@"pictures"]) {
+        if (photoURLString) {
+            NSURL *photoURL = [[NSURL alloc] initWithString:photoURLString];
+            if (photoURL && photoURL.scheme && photoURL.host) {
+                [tempArray addObject:[[FSBasicImage alloc] initWithImageURL:photoURL]];
+            }
+        }
+    }
+    if (tempArray.count == 0) {
+        [tempArray addObject:[[FSBasicImage alloc] initWithImage:[UIImage imageNamed:@"placeholder-photo.png"]]];
+    }
+    return (NSArray *)tempArray;
+}
 
 + (UIImage*)imageByScalingAndCroppingForSize:(CGSize)targetSize withImage:(UIImage *)photo {
     UIImage *sourceImage = photo;

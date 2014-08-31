@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Best Bites. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+// #import <Foundation/Foundation.h>
 
 @interface Constants : NSObject
 
@@ -61,4 +61,7 @@ extern NSString * const kFeaturedDishesCityKey;
 extern NSString * const kFeaturedDishesStateKey;
 extern NSString * const kFeaturedDishes_featuredDishes;
 
+////Front Page Categories
+//extern NSString * const kCategoriesGroup;
+//extern NSString * const kCategoryWithRestaurantGroup;
 @end

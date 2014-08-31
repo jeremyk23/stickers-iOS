@@ -10,4 +10,8 @@
 
 @implementation FrontPageCategoryData
 
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView configureCellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return [UICollectionViewCell new];
+}
+
 @end

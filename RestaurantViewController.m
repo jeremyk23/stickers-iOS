@@ -86,7 +86,7 @@
         [self.restaurantLogo loadInBackground];
         
         [self.photoGallery registerNib:[UINib nibWithNibName:@"RestaurantPhotoGalleryCell" bundle:nil]  forCellWithReuseIdentifier:@"RestaurantPhotoCell"];
-        self.fsImageSource = [[FSBasicImageSource alloc] initWithImages:[self createPhotosArray]];
+        self.fsImageSource = [[FSBasicImageSource alloc] initWithImages:[Helpers createPhotosArray:self.restaurant]];
         [self.photoGallery reloadData];
         
         self.stickersGridView.stickersDelegate = self;
@@ -129,27 +129,6 @@
         [self.view updateConstraints];
     }
     
-}
-
-- (NSArray *)createPhotosArray {
-    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[self.restaurant[@"pictures"] count] + 1];
-    PFFile *photoFile = self.restaurant[@"restaurantPhoto"];
-    if (photoFile.url) {
-        NSURL *mainRestaurantPhotoURL = [[NSURL alloc] initWithString:photoFile.url];
-        [tempArray addObject:[[FSBasicImage alloc] initWithImageURL:mainRestaurantPhotoURL]];
-    }
-    for (NSString *photoURLString in self.restaurant[@"pictures"]) {
-        if (photoURLString) {
-            NSURL *photoURL = [[NSURL alloc] initWithString:photoURLString];
-            if (photoURL && photoURL.scheme && photoURL.host) {
-                [tempArray addObject:[[FSBasicImage alloc] initWithImageURL:photoURL]];
-            }
-        }
-    }
-    if (tempArray.count == 0) {
-        [tempArray addObject:[[FSBasicImage alloc] initWithImage:[UIImage imageNamed:@"placeholder-photo.png"]]];
-    }
-    return (NSArray *)tempArray;
 }
 
 - (NSArray *)createReviewsArray:(NSMutableArray *)reviews {
@@ -489,8 +468,6 @@
 }
 #pragma mark - ERequestInterface
 - (void)didFinishLoadingFoursquare:(NSDictionary *)response {
-    NSDictionary *TEST = response[@"venue"][@"location"];
-    NSDictionary *TEST2 = response[@"venue"][@"location"][@"lat"];
     [self zoomInMapWithLatitude:[response[@"venue"][@"location"][@"lat"] floatValue] andLongitude:[response[@"venue"][@"location"][@"lng"] floatValue]];
     [self configureRestaurantInfo:response[@"venue"]];
 }

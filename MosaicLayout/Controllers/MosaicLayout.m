@@ -84,7 +84,6 @@
 -(void)prepareLayout{
     
     //  Set all column heights to 0
-    int test = self.columnsQuantity;
     _columns = [NSMutableArray arrayWithCapacity:self.columnsQuantity];
     for (NSInteger i = 0; i < self.columnsQuantity; i++) {
         [_columns addObject:@(0)];

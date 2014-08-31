@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Max Lemkin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+// #import <Foundation/Foundation.h>
 
 @protocol JKLocuRequestDelegate;
 

@@ -7,7 +7,7 @@
 //
 
 #import "AFTableViewCell.h"
-#import "RestaurantCollectionViewCell.h"
+#import "RestaurantCategoryCollectionViewCell.h"
 
 @implementation AFTableViewCell
 
@@ -23,8 +23,6 @@
     layout.itemSize = CGSizeMake(320.0f, 245.0f);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"BBCategoryCell" bundle:[NSBundle mainBundle]]
-        forCellWithReuseIdentifier:CollectionViewCellIdentifier];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.collectionView setPagingEnabled:YES];

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Betzerra. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+// #import <Foundation/Foundation.h>
 @class PFFile;
 
 typedef enum {

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PFImageView;
 
 @interface CategoryCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *categoryNameLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *categoryImage;
 
 @end

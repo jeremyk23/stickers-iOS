@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCell" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionViewCellIdentifier" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="245"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -42,6 +42,7 @@
             </constraints>
             <size key="customSize" width="320" height="245"/>
             <connections>
+                <outlet property="categoryImage" destination="0sh-sb-hGX" id="N74-F0-Kah"/>
                 <outlet property="categoryNameLabel" destination="QzJ-Ep-Xm7" id="bIG-fx-9ls"/>
             </connections>
             <point key="canvasLocation" x="277" y="180.5"/>
