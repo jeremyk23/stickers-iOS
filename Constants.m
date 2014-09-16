@@ -64,5 +64,11 @@ NSString * const kFeaturedDishes_featuredDishes = @"featuredDishes";
 //NSString * const kCategoriesGroup = @"fpCategoriesGroup";
 //NSString * const kCategoryWithRestaurantGroup = @"fpCategoryWithRestaurantGroup";
 
+//TableView and CollectionView Cell Identifiers
+NSString * const CategoryCollectionViewCellIdentifier = @"CategoryCollectionViewCellIdentifier";
+NSString * const CategoryWithRestaurantCollectionCellIdentifier = @"CategoryWithRestaurantCollectionCellIdentifier";
+NSString * const RestaurantCollectionViewCellIdentifier = @"RestaurantCollectionViewCellIdentifier";
+NSString * const kPhotoGalleryCollectionViewCellIdentifier = @"PhotoGalleryCollectionViewCellIdentifier";
+NSString * const kSingleRestaurantTVCellIdentifier = @"SingleRestaurantTVCellIdentifier";
 @end
 

@@ -64,4 +64,11 @@ extern NSString * const kFeaturedDishes_featuredDishes;
 ////Front Page Categories
 //extern NSString * const kCategoriesGroup;
 //extern NSString * const kCategoryWithRestaurantGroup;
+
+//TableView and CollectionView Cell Identifiers
+extern NSString * const CategoryCollectionViewCellIdentifier;
+extern NSString * const CategoryWithRestaurantCollectionCellIdentifier;
+extern NSString * const RestaurantCollectionViewCellIdentifier;
+extern NSString * const kPhotoGalleryCollectionViewCellIdentifier;
+extern NSString * const kSingleRestaurantTVCellIdentifier;
 @end

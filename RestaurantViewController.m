@@ -13,12 +13,12 @@
 #import "EFoursquareParser.h"
 #import "Menu.h"
 #import "MenuViewController.h"
-#import "RestaurantPhotoGalleryCell.h"
 #import "FSBasicImage.h"
 #import "FSBasicImageSource.h"
 #import "FSImageViewerViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MapKit/MapKit.h>
+#import <MBProgressHUD.h>
 #import "Helpers.h"
 
 #define NUMBER_OF_ASYNCH_CALLS 2
@@ -31,9 +31,9 @@
 @property (nonatomic, strong) NSArray *awards;
 @property (nonatomic, strong) NSMutableArray *displayedReviews;
 @property (nonatomic, strong) NSArray *allReviews;
-@property (nonatomic, strong) FSBasicImageSource *fsImageSource;
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, strong) NSMutableArray *imageCache;
+@property (nonatomic, strong) NSString *parseRestaurantId;
 
 @property (nonatomic) int numberOfSections;
 @property (nonatomic) int infoSection;
@@ -47,22 +47,29 @@
 
 @implementation RestaurantViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andPFObject:(PFObject *)restaurant {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.restaurant = restaurant;
-        self.displayedReviews = [[NSMutableArray alloc] initWithCapacity:5];
-        self.request = [[ERequestInterface alloc] init];
-        self.request.eDelegate = self;
-    }
-    return self;
-}
-
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.request = [[ERequestInterface alloc] init];
         self.request.eDelegate = self;
+        self.photoGalleryView.photoGalleryDelegate = self;
+        self.displayedReviews = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andPFObject:(PFObject *)restaurant {
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.restaurant = restaurant;
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andParseObjectId:(NSString *)parseObjectId {
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.parseRestaurantId = parseObjectId;
     }
     return self;
 }
@@ -71,32 +78,41 @@
     [super viewDidLoad];
     //in the case that a subclass with no restaurant calls this method, check to make sure restaurant exists
     if (self.restaurant) {
-        [self.request requestRestaurantInfoWithId:self.restaurant[@"foursquareId"]];
-        self.infoSection = 0;
-        self.menuSection = 1;
-        self.awardsSection = -1;
-        self.reviewsSection = -1;
-        
-        self.waitForTableReload = 0;
-        
-        CALayer * logoLayer = [self.restaurantLogo layer];
-        [logoLayer setMasksToBounds:YES];
-        [logoLayer setCornerRadius:10.0];
-        self.restaurantLogo.file = self.restaurant[@"restaurantLogo"];
-        [self.restaurantLogo loadInBackground];
-        
-        [self.photoGallery registerNib:[UINib nibWithNibName:@"RestaurantPhotoGalleryCell" bundle:nil]  forCellWithReuseIdentifier:@"RestaurantPhotoCell"];
-        self.fsImageSource = [[FSBasicImageSource alloc] initWithImages:[Helpers createPhotosArray:self.restaurant]];
-        [self.photoGallery reloadData];
-        
-        self.stickersGridView.stickersDelegate = self;
-        
-        self.title = self.restaurant[@"restaurantName"];
-        self.restaurantNameLabel.text = self.restaurant[@"restaurantName"];
-        self.addressLabel.text = self.restaurant[@"address"];
-//        [self.view bringSubviewToFront:self.restaurantNameLabel];
-        [self detailedRestaurantQuery];
+        [self displayParseRestaurantData];
+    } else if (self.parseRestaurantId) {
+        [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
+        [query getObjectInBackgroundWithId:self.parseRestaurantId block:^(PFObject *restaurant, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
+            self.restaurant = restaurant;
+            [self displayParseRestaurantData];
+        }];
     }
+}
+
+- (void)displayParseRestaurantData {
+    [self.request requestRestaurantInfoWithId:self.restaurant[@"foursquareId"]];
+    self.infoSection = 0;
+    self.menuSection = 1;
+    self.awardsSection = -1;
+    self.reviewsSection = -1;
+    
+    self.waitForTableReload = 0;
+    
+    [self.photoGalleryView setPicturesAndCellTypeWithRestaurant:self. restaurant];
+    
+    CALayer * logoLayer = [self.restaurantLogo layer];
+    [logoLayer setMasksToBounds:YES];
+    [logoLayer setCornerRadius:10.0];
+    self.restaurantLogo.file = self.restaurant[@"restaurantLogo"];
+    [self.restaurantLogo loadInBackground];
+    self.stickersGridView.stickersDelegate = self;
+    
+    self.title = self.restaurant[@"restaurantName"];
+    self.restaurantNameLabel.text = self.restaurant[@"restaurantName"];
+    self.addressLabel.text = self.restaurant[@"address"];
+    //        [self.view bringSubviewToFront:self.restaurantNameLabel];
+    [self detailedRestaurantQuery];
 }
 
 - (void)zoomInMapWithLatitude:(float)latitude andLongitude:(float)longitude {
@@ -404,59 +420,10 @@
     }
 }
 
-#pragma mark - UICollectionViewDataSource Methods
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSUInteger numberOfImages = self.fsImageSource.numberOfImages;
-    if (numberOfImages) {
-        return numberOfImages;
-    } else {
-        return 1;
-    }
+#pragma mark - FSPhotoGalleryCollectionViewDelegate
+- (void)didSelectRestaurantAndShouldPushViewController:(UIViewController *)viewController {
+    [self.navigationController pushViewController:viewController animated:YES];
 }
-
-- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    return 1;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    RestaurantPhotoGalleryCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"RestaurantPhotoCell" forIndexPath:indexPath];
-    NSURL *pictureURL = [self.fsImageSource objectAtIndexedSubscript:indexPath.row].URL;
-    if (!pictureURL) {
-        cell.imageView.image = [self.fsImageSource objectAtIndexedSubscript:indexPath.row].image;
-    } else {
-        [cell.imageView sd_setImageWithURL:pictureURL
-                          placeholderImage:[UIImage imageNamed:@"placeholder-photo.png"]];
-        [cell.imageView sd_setImageWithURL:pictureURL placeholderImage:[UIImage imageNamed:@"placeholder-photo.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            cell.imageView.image = [Helpers imageByScalingAndCroppingForSize:cell.imageView.frame.size withImage:image];
-        }];
-
-    }
-        return cell;
-}
-
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.fsImageSource.numberOfImages > 1) {
-        FSImageViewerViewController *photoViewer = [[FSImageViewerViewController alloc] initWithImageSource:self.fsImageSource imageIndex:indexPath.row];
-        [self.navigationController pushViewController:photoViewer animated:YES];
-    }
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return collectionView.frame.size;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 0.0f;
-}
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0.0f;
-}
-
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 44;
-//}
 
 #pragma mark - StickersCollectionView
 - (void)didSelectLogoWithURL:(NSURL *)url {

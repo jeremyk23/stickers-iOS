@@ -71,6 +71,8 @@
 		D41733AE19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */; };
 		D41733AF19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */; };
 		D42C819119AFFF89001A57BA /* FrontPageCategoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = D42C819019AFFF89001A57BA /* FrontPageCategoryData.m */; };
+		D4466AA819B2D51900EE0EAB /* RestaurantListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4466AA719B2D51900EE0EAB /* RestaurantListViewController.m */; };
+		D45CD52719B42F270046E384 /* FSPhotoGalleryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D45CD52619B42F270046E384 /* FSPhotoGalleryCollectionView.m */; };
 		D499572819AC2B1B00CC3E93 /* publication-names.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D499572719AC2B1B00CC3E93 /* publication-names.rtf */; };
 		D4BF14CE19AFCC240058BD80 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4BF14CC19AFCC240058BD80 /* CategoryCollectionViewCell.m */; };
 		D4BF14CF19AFCC240058BD80 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BF14CD19AFCC240058BD80 /* CategoryCollectionViewCell.xib */; };
@@ -208,6 +210,10 @@
 		D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantPhotoGalleryCell.xib; sourceTree = "<group>"; };
 		D42C818F19AFFF89001A57BA /* FrontPageCategoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageCategoryData.h; sourceTree = "<group>"; };
 		D42C819019AFFF89001A57BA /* FrontPageCategoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageCategoryData.m; sourceTree = "<group>"; };
+		D4466AA619B2D51900EE0EAB /* RestaurantListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantListViewController.h; sourceTree = "<group>"; };
+		D4466AA719B2D51900EE0EAB /* RestaurantListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantListViewController.m; sourceTree = "<group>"; };
+		D45CD52519B42F270046E384 /* FSPhotoGalleryCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPhotoGalleryCollectionView.h; sourceTree = "<group>"; };
+		D45CD52619B42F270046E384 /* FSPhotoGalleryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPhotoGalleryCollectionView.m; sourceTree = "<group>"; };
 		D499572719AC2B1B00CC3E93 /* publication-names.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "publication-names.rtf"; sourceTree = "<group>"; };
 		D4BF14CB19AFCC240058BD80 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
 		D4BF14CC19AFCC240058BD80 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
@@ -425,6 +431,7 @@
 		46710F2E1971856C0024CECD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D42C818E19AFFF71001A57BA /* FrontPageCategoryDataSource */,
 				467B915B19A7AE8500EB847C /* RestaurantCategory */,
 				46710F31197185BB0024CECD /* MenuModel */,
 				46710F30197185AB0024CECD /* RestaurantModels */,
@@ -480,6 +487,7 @@
 				46AF798F197B07CA00730F91 /* Search */,
 				46710F4C1971885B0024CECD /* Home */,
 				46710F46197187D20024CECD /* FrontPage */,
+				D491088E19BA68A300AC2864 /* RestaurantLVC */,
 				46710F47197187E20024CECD /* Restaurant */,
 				46710F48197187F10024CECD /* Menu */,
 			);
@@ -505,12 +513,10 @@
 				46710F361971877B0024CECD /* RestaurantViewController.h */,
 				46710F371971877B0024CECD /* RestaurantViewController.m */,
 				46710F381971877B0024CECD /* RestaurantViewController.xib */,
-				D41733AB19AADDCE00F62861 /* RestaurantPhotoGalleryCell.h */,
-				D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */,
-				D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */,
-				46AF799D197BF7B800730F91 /* Foursquare Restaurant */,
 				D4E845BB19AD6BDF003F1864 /* StickersCollectionView.h */,
 				D4E845BC19AD6BDF003F1864 /* StickersCollectionView.m */,
+				D45CD52819B432730046E384 /* PhotoGalleryColelctionView */,
+				46AF799D197BF7B800730F91 /* Foursquare Restaurant */,
 			);
 			name = Restaurant;
 			sourceTree = "<group>";
@@ -656,13 +662,33 @@
 			name = CategoriesData;
 			sourceTree = "<group>";
 		};
+		D45CD52819B432730046E384 /* PhotoGalleryColelctionView */ = {
+			isa = PBXGroup;
+			children = (
+				D41733AD19AADDCE00F62861 /* RestaurantPhotoGalleryCell.xib */,
+				D45CD52519B42F270046E384 /* FSPhotoGalleryCollectionView.h */,
+				D45CD52619B42F270046E384 /* FSPhotoGalleryCollectionView.m */,
+				D41733AB19AADDCE00F62861 /* RestaurantPhotoGalleryCell.h */,
+				D41733AC19AADDCE00F62861 /* RestaurantPhotoGalleryCell.m */,
+			);
+			name = PhotoGalleryColelctionView;
+			sourceTree = "<group>";
+		};
+		D491088E19BA68A300AC2864 /* RestaurantLVC */ = {
+			isa = PBXGroup;
+			children = (
+				D4466AA619B2D51900EE0EAB /* RestaurantListViewController.h */,
+				D4466AA719B2D51900EE0EAB /* RestaurantListViewController.m */,
+			);
+			name = RestaurantLVC;
+			sourceTree = "<group>";
+		};
 		D4BF14D019AFE7CE0058BD80 /* CategoriesCollection */ = {
 			isa = PBXGroup;
 			children = (
 				D4BF14CB19AFCC240058BD80 /* CategoryCollectionViewCell.h */,
 				D4BF14CC19AFCC240058BD80 /* CategoryCollectionViewCell.m */,
 				D4BF14CD19AFCC240058BD80 /* CategoryCollectionViewCell.xib */,
-				D42C818E19AFFF71001A57BA /* FrontPageCategoryDataSource */,
 			);
 			name = CategoriesCollection;
 			sourceTree = "<group>";
@@ -897,6 +923,7 @@
 				46710F28197185620024CECD /* Menu_SectionDescr.m in Sources */,
 				D42C819119AFFF89001A57BA /* FrontPageCategoryData.m in Sources */,
 				D4CE512C19B0E7B500EC3C89 /* SingleRestaurantTableViewCell.m in Sources */,
+				D4466AA819B2D51900EE0EAB /* RestaurantListViewController.m in Sources */,
 				D4C7982819AB9159003D9D53 /* Helpers.m in Sources */,
 				46AF798A197AB34000730F91 /* SearchViewController.m in Sources */,
 				46710F08197172070024CECD /* JKLocu.m in Sources */,
@@ -933,6 +960,7 @@
 				D4E845BA19AD41A3003F1864 /* MosaicCell.m in Sources */,
 				46710EAE197166840024CECD /* main.m in Sources */,
 				46710F0A197172070024CECD /* BZFoursquare.m in Sources */,
+				D45CD52719B42F270046E384 /* FSPhotoGalleryCollectionView.m in Sources */,
 				46710F5619718AD20024CECD /* ALView+PureLayout.m in Sources */,
 				46710EE4197169570024CECD /* HomeViewController.m in Sources */,
 				46FD407719A6F11D00A44AD6 /* AFTableViewCell.m in Sources */,

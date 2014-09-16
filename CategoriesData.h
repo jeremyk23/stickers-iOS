@@ -16,6 +16,7 @@
 @property (nonatomic, strong) PFFile *categoryPicture;
 @property (nonatomic, strong) NSString *categoryTitle;
 @property (nonatomic, strong) NSString *parseCategoryObjectId;
+@property (nonatomic, strong) NSArray *restaurants;
 // optional. May be used for when category isn't an array of restaurants on the category object
 @property (nonatomic, strong) PFQuery *categoryQuery;
 

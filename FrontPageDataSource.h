@@ -7,14 +7,12 @@
 //
 
 #import "FrontPageCategoryData.h"
+#import "FSPhotoGalleryCollectionView.h"
 
 @protocol FrontPageDataSourceDelegate;
 
-static NSString *CategoryCollectionViewCellIdentifier = @"CategoryCollectionViewCellIdentifier";
-static NSString *CategoryWithRestaurantCollectionCellIdentifier = @"CategoryWithRestaurantCollectionCellIdentifier";
-static NSString *RestaurantCollectionViewCellIdentifier = @"RestaurantCollectionViewCellIdentifier";
 
-@interface FrontPageDataSource : NSObject
+@interface FrontPageDataSource : NSObject <FSPhotoGalleryCollectionViewDelegate>
 
 
 @property (weak) id <FrontPageDataSourceDelegate> fpDatasourceDelegate;
@@ -26,6 +24,7 @@ static NSString *RestaurantCollectionViewCellIdentifier = @"RestaurantCollection
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView configureNumberOfItemsInSection:(NSInteger)section;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView configureItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)collectionView:(UICollectionView *)collectionView configureDidSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 - (id)initAndConstructQuery;
 
@@ -34,5 +33,6 @@ static NSString *RestaurantCollectionViewCellIdentifier = @"RestaurantCollection
 @protocol FrontPageDataSourceDelegate <NSObject>
 
 - (void)shouldReloadTable;
+- (void)didSelectItemAndShouldPushViewController:(UIViewController *)viewController;
 
 @end

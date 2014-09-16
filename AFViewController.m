@@ -12,17 +12,21 @@
 #import "Constants.h"
 #import "RestaurantCategory.h"
 #import "RestaurantCategoryCollectionViewCell.h"
+#import "SingleRestaurantTableViewCell.h"
 #import "CategoriesData.h"
 #import "FPCategoryGroup.h"
 #import "BBLabel.h"
 #import "Helpers.h"
+#import <MBProgressHUD.h>
+#import "RestaurantCategoryCellData.h"
 
 #import <Parse/Parse.h>
 
-@interface AFViewController ()
+@interface AFViewController () <MBProgressHUDDelegate>
 
 @property (nonatomic, strong) FrontPageDataSource *fpDataSource;
 @property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
+@property (nonatomic, strong) MBProgressHUD *HUD;
 
 @end
 
@@ -31,34 +35,15 @@
 -(void)loadView
 {
     [super loadView];
-    /*
-    PFQuery *categoryQuery = [PFQuery queryWithClassName:@"Restaurant"];
-    categoryQuery.limit = 50;
-    NSArray *objects = [categoryQuery findObjects];
-    NSMutableDictionary *categories = [[NSMutableDictionary alloc] initWithCapacity:10];
-    for (PFObject *restaurant in objects) {
-        NSString *cuisineCategory = restaurant[@"cuisine"];
-        if (categories[cuisineCategory]) {
-            [categories[cuisineCategory] addObject:restaurant];
-        } else {
-            NSMutableArray *listOfRestaurants = [[NSMutableArray alloc] initWithCapacity:10];
-            [listOfRestaurants addObject:restaurant];
-            categories[cuisineCategory] = listOfRestaurants;
-        }
-    }
-    NSMutableArray *tempCategoriesArray = [[NSMutableArray alloc] initWithCapacity:categories.count];
-    for (id key in categories) {
-        RestaurantCategory *rc = [[RestaurantCategory alloc] init];
-        rc.categoryName = key;
-        rc.restaurants = categories[key];
-        [tempCategoriesArray addObject:rc];
-    }
-     */
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.HUD = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    self.tableView.rowHeight = 245.0f;
+//    [self.tableView registerClass:[SingleRestaurantTableViewCell class] forCellReuseIdentifier:kSingleRestaurantTVCellIdentifier];
+    self.HUD.delegate = self;
     self.fpDataSource = [[FrontPageDataSource alloc] initAndConstructQuery];
     self.fpDataSource.fpDatasourceDelegate = self;
     
@@ -74,12 +59,12 @@
 
 - (void)shouldReloadTable {
     [self.tableView reloadData];
+    [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
 }
 
 #pragma mark - UITableViewDataSource Methods
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.fpDataSource.elements.count;
 }
 
@@ -89,9 +74,17 @@
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(AFTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [cell setCollectionViewDataSourceDelegate:self index:indexPath.row];
-    NSInteger index = cell.collectionView.tag;
+    NSLock *mutableArrayLock = [[NSLock alloc] init];
+    [mutableArrayLock lock];
+    FPCategoryGroup *categoryGroup = self.fpDataSource.elements[indexPath.row];
+    [mutableArrayLock unlock];
+    if (categoryGroup.groupType == kSingleRestaurantGroup) {
+        cell.collectionView.tag = indexPath.row;
+    } else {
+        [cell setCollectionViewDataSourceDelegate:self index:indexPath.row];
+    }
     
+    NSInteger index = cell.collectionView.tag;
     CGFloat horizontalOffset = [self.contentOffsetDictionary[[@(index) stringValue]] floatValue];
     [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0)];
 }
@@ -109,41 +102,30 @@
     [mutableArrayLock lock];
     FPCategoryGroup *fpCategoryGroup = self.fpDataSource.elements[collectionView.tag];
     [mutableArrayLock unlock];
-    return fpCategoryGroup.items.count;
+    if (fpCategoryGroup.groupType == kCategoriesOnlyGroup) {
+        return fpCategoryGroup.items.count;
+    } else {
+        return 0;
+    }
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self.fpDataSource collectionView:collectionView configureItemAtIndexPath:indexPath];
     if (!cell) {
-        NSLog(@"stop");
+        NSLog(@"!!!!!!XXXXXXXX YOUR NOT RETURNING A CELL! XXXXXXXX!!!!!!");
     }
     
-//    RestaurantCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryWithRestaurantCollectionCellIdentifier forIndexPath:indexPath];
-//    NSLock *mutableArrayLock = [[NSLock alloc] init];
-//    [mutableArrayLock lock];
-//    FPCategoryGroup *fpCategoryGroup = self.fpDataSource.elements[collectionView.tag];
-//    [mutableArrayLock unlock];
-//    cell.restaurantPhoto.image = [UIImage imageNamed:@"placeholder-photo.png"];
-//    cell.restaurantNameLabel.text = fpCategoryGroup.items[indexPath.item][@"restaurantName"];
-//        [self.view bringSubviewToFront:cell.restaurantNameLabel];
-//        PFFile *photoFile = fpCategoryGroup.items[indexPath.item][@"restaurantPhoto"];
-//        if (photoFile) {
-//            cell.restaurantPhoto.file = photoFile;
-//            [cell.restaurantPhoto loadInBackground:^(UIImage *image, NSError *error) {
-//                cell.restaurantPhoto.image = [Helpers imageByScalingAndCroppingForSize:cell.restaurantPhoto.frame.size withImage:image];
-//            }];
-//        }
     return cell;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLock *mutableArrayLock = [[NSLock alloc] init];
-    [mutableArrayLock lock];
-    FPCategoryGroup *fpCategoryGroup = self.fpDataSource.elements[collectionView.tag];
-    [mutableArrayLock unlock];
-    PFObject *restaurant = fpCategoryGroup.items[indexPath.item];
-    RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] initWithNibName:@"RestaurantViewController" bundle:nil andPFObject:restaurant];
-    [self.navigationController pushViewController:restaurantVC animated:YES];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.fpDataSource collectionView:collectionView configureDidSelectItemAtIndexPath:indexPath];
+}
+
+// FPDatasourceDelegate METHOD
+- (void)didSelectItemAndShouldPushViewController:(UIViewController *)viewController {
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate Methods
@@ -156,6 +138,12 @@
     UICollectionView *collectionView = (UICollectionView *)scrollView;
     NSInteger index = collectionView.tag;
     self.contentOffsetDictionary[[@(index) stringValue]] = @(horizontalOffset);
+}
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [self.HUD removeFromSuperview];
+    self.HUD = nil;
 }
 
 @end

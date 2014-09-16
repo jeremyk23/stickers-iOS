@@ -11,9 +11,15 @@
 
 @implementation AFTableViewCell
 
+- (id)initWithOutCollectionViewAndWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+    self.categoryLabel.alpha = 0.0f;
+    self.transparencyView.alpha = 0.0f;
+    return self;
+}
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -39,18 +45,25 @@
 
 - (void)displayCategoryLabel {
     if (!self.categoryLabel) {
+        self.transparencyView = [[UIView alloc] init];
+        self.transparencyView.frame = CGRectMake(0.0f, 190.0f, 320.0f, 55.0f);
+        self.transparencyView.backgroundColor = [UIColor colorWithRed:94.0f/255.0f green:164.0f/255.0f blue:174.0f/255.0f alpha:0.0f];
+        [self addSubview:self.transparencyView];
+        
         self.categoryLabel = [[BBLabel alloc] init];
         self.categoryLabel.frame = CGRectMake(0.0f, 212.0f, 320.0f, 30.0f);
         self.categoryLabel.textColor = [UIColor whiteColor];
         self.categoryLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.categoryLabel];
+        
+        
     }
     [UIView animateWithDuration:0.75
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          [self.categoryLabel setAlpha:1.0];
-                         [self.transparencyView setAlpha:0.75];
+                         self.transparencyView.backgroundColor = [UIColor colorWithRed:94.0f/255.0f green:164.0f/255.0f blue:174.0f/255.0f alpha:0.75f];
                      }
                      completion:^(BOOL finished) {
                          // Completion Block

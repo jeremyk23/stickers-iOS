@@ -8,7 +8,7 @@
 
 #import "CategoriesData.h"
 #import "CategoryCollectionViewCell.h"
-
+#import "Constants.h"
 
 NSString static *categoriesCell = @"CategoriesCell";
 
@@ -20,6 +20,7 @@ NSString static *categoriesCell = @"CategoriesCell";
         self.categoryPicture = category[@"categoryPicture"];
         self.categoryTitle = category[@"categoryName"];
         self.parseCategoryObjectId = category.objectId;
+        self.restaurants = category[@"restaurants"];
     }
     return self;
 }

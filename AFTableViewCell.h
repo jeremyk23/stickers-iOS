@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIView *transparencyView;
 @property (nonatomic, strong) BBLabel *categoryLabel;
 
+- (id)initWithOutCollectionViewAndWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)displayCategoryLabel;
 -(void)setCollectionViewDataSourceDelegate:(id<UICollectionViewDataSource, UICollectionViewDelegate>)dataSourceDelegate index:(NSInteger)index;
 

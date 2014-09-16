@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
         <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
@@ -10,7 +11,7 @@
                 <outlet property="addressLabel" destination="ofO-ED-dqN" id="hp9-rs-ynz"/>
                 <outlet property="infoBackdropView" destination="ntB-PZ-7la" id="snD-7t-yMr"/>
                 <outlet property="mapView" destination="AoY-UR-xvB" id="T2D-Sf-TWx"/>
-                <outlet property="photoGallery" destination="33d-xq-C0H" id="XRd-51-Q1F"/>
+                <outlet property="photoGalleryView" destination="33d-xq-C0H" id="D7M-ow-iWC"/>
                 <outlet property="restaurantLogo" destination="y9J-0B-kcz" id="iJ9-Gl-fGQ"/>
                 <outlet property="restaurantNameLabel" destination="IUa-p2-9Am" id="hJQ-yC-8Hg"/>
                 <outlet property="stickerGridViewHeight" destination="yDk-cW-Te4" id="a1n-8t-7zr"/>
@@ -31,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="33d-xq-C0H">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="33d-xq-C0H" customClass="FSPhotoGalleryCollectionView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="nWz-og-ANz"/>
@@ -42,10 +43,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <connections>
-                                    <outlet property="dataSource" destination="-1" id="jj7-ff-yfj"/>
-                                    <outlet property="delegate" destination="-1" id="uQc-Vx-33Y"/>
-                                </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntB-PZ-7la" userLabel="Info_Backdrop">
                                 <rect key="frame" x="0.0" y="162" width="600" height="58"/>
