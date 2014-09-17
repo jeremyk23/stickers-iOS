@@ -23,6 +23,8 @@
 
 @interface FrontPageDataSource ()
 @property int numberOfAsyncCallsFinished;
+@property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
+
 @end
 
 @implementation FrontPageDataSource
@@ -31,6 +33,7 @@
     self = [super init];
     if (self) {
         self.elements = [[NSMutableArray alloc] initWithCapacity:10];
+        self.contentOffsetDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -97,7 +100,11 @@
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView configureCellForIndexPath:(NSIndexPath *)indexPath {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.elements.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLock *mutableArrayLock = [[NSLock alloc] init];
     [mutableArrayLock lock];
     FPCategoryGroup *categoryGroup = self.elements[indexPath.row];
@@ -114,7 +121,7 @@
             fsCollectionView = (FSPhotoGalleryCollectionView *)cell.collectionView;
         }
         
-        [fsCollectionView setPicturesWithArray:restaurantData.restaurantPictures];
+        [fsCollectionView setPicturesWithArray:restaurantData.restaurantPictures andObjectId:restaurantData.parseObjectId];
         cell.restaurantNameLabel.text = restaurantData.restaurantName;
         cell.categoryLabel.text = restaurantData.address;
         return cell;
@@ -140,7 +147,107 @@
     return cell;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView configureItemAtIndexPath:(NSIndexPath *)indexPath {
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+////    NSLock *mutableArrayLock = [[NSLock alloc] init];
+////    [mutableArrayLock lock];
+////    FPCategoryGroup *fpCategoryGroup = self.elements[collectionView.tag];
+////    [mutableArrayLock unlock];
+////    CategoryGroupType groupType = fpCategoryGroup.groupType;
+////    if (groupType == kCategoriesOnlyGroup) {
+////        if (self.fpDatasourceDelegate && [self.fpDatasourceDelegate respondsToSelector:@selector(didSelectItemAndShouldPushViewController:)]) {
+////            CategoriesData *cData = (CategoriesData *)fpCategoryGroup.items[indexPath.row];
+////            RestaurantListViewController *restaurantLVC = [[RestaurantListViewController alloc] initWithCategoryData:cData];
+////            [self.fpDatasourceDelegate didSelectItemAndShouldPushViewController:restaurantLVC];
+////        }
+////    } else if (groupType == kSingleRestaurantGroup) {
+////        if (self.fpDatasourceDelegate && [self.fpDatasourceDelegate respondsToSelector:@selector(didSelectItemAndShouldPushViewController:)]) {
+////            RestaurantCategoryCellData *rData = (RestaurantCategoryCellData *)fpCategoryGroup.items[indexPath.row];
+////            RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] initWithNibName:@"RestaurantViewController" bundle:nil andParseObjectId:rData.parseObjectId];
+////            [self.fpDatasourceDelegate didSelectItemAndShouldPushViewController:restaurantVC];
+////        }
+////    }
+//
+//}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(AFTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLock *mutableArrayLock = [[NSLock alloc] init];
+    [mutableArrayLock lock];
+    FPCategoryGroup *categoryGroup = self.elements[indexPath.row];
+    [mutableArrayLock unlock];
+    if (categoryGroup.groupType == kSingleRestaurantGroup) {
+        cell.collectionView.tag = indexPath.row;
+    } else {
+        [cell setCollectionViewDataSourceDelegate:self index:indexPath.row];
+    }
+    
+    NSInteger index = cell.collectionView.tag;
+    CGFloat horizontalOffset = [self.contentOffsetDictionary[[@(index) stringValue]] floatValue];
+    [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0)];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 245.0f;
+}
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView configureCellForIndexPath:(NSIndexPath *)indexPath {
+//    NSLock *mutableArrayLock = [[NSLock alloc] init];
+//    [mutableArrayLock lock];
+//    FPCategoryGroup *categoryGroup = self.elements[indexPath.row];
+//    [mutableArrayLock unlock];
+//    if (categoryGroup.groupType == kSingleRestaurantGroup) {
+//        SingleRestaurantTableViewCell *cell = (SingleRestaurantTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kSingleRestaurantTVCellIdentifier];
+//        RestaurantCategoryCellData *restaurantData = (RestaurantCategoryCellData *)categoryGroup.cellData;
+//        FSPhotoGalleryCollectionView *fsCollectionView;
+//        if (!cell) {
+//            cell = [[SingleRestaurantTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSingleRestaurantTVCellIdentifier];
+//            fsCollectionView = (FSPhotoGalleryCollectionView *)cell.collectionView;
+//            fsCollectionView.photoGalleryDelegate = self;
+//        } else {
+//            fsCollectionView = (FSPhotoGalleryCollectionView *)cell.collectionView;
+//        }
+//        
+//        [fsCollectionView setPicturesWithArray:restaurantData.restaurantPictures];
+//        cell.restaurantNameLabel.text = restaurantData.restaurantName;
+//        cell.categoryLabel.text = restaurantData.address;
+//        return cell;
+//    }
+//    
+//    static NSString *CellIdentifier = @"CellIdentifier";
+//    AFTableViewCell *cell = (AFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (!cell) {
+//        cell = [[AFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+//    
+//    
+//    if (categoryGroup.groupType == kCategoriesOnlyGroup) {
+//        [cell.collectionView registerNib:[UINib nibWithNibName:@"CategoryCollectionViewCell" bundle:[NSBundle mainBundle]]
+//              forCellWithReuseIdentifier:CategoryCollectionViewCellIdentifier];
+//    } else if (categoryGroup.groupType == kCategoryWithRestaurantGroup) {
+//        [cell.collectionView registerNib:[UINib nibWithNibName:@"RestaurantCategoryCollectionViewCell" bundle:[NSBundle mainBundle]]
+//              forCellWithReuseIdentifier:RestaurantCollectionViewCellIdentifier];
+//        CategoriesData *cData = (CategoriesData *)categoryGroup.cellData;
+//        cell.categoryLabel.text = cData.categoryTitle;
+//        [cell displayCategoryLabel];
+//    }
+//    return cell;
+//}
+
+#pragma mark - UICollectionViewDataSource Methods
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSLock *mutableArrayLock = [[NSLock alloc] init];
+    [mutableArrayLock lock];
+    FPCategoryGroup *fpCategoryGroup = self.elements[collectionView.tag];
+    [mutableArrayLock unlock];
+    if (fpCategoryGroup.groupType == kCategoriesOnlyGroup) {
+        return fpCategoryGroup.items.count;
+    } else {
+        return 0;
+    }
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLock *mutableArrayLock = [[NSLock alloc] init];
     [mutableArrayLock lock];
     FPCategoryGroup *fpCategoryGroup = self.elements[collectionView.tag];
@@ -153,7 +260,7 @@
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView configureDidSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLock *mutableArrayLock = [[NSLock alloc] init];
     [mutableArrayLock lock];
     FPCategoryGroup *fpCategoryGroup = self.elements[collectionView.tag];
@@ -165,19 +272,14 @@
             RestaurantListViewController *restaurantLVC = [[RestaurantListViewController alloc] initWithCategoryData:cData];
             [self.fpDatasourceDelegate didSelectItemAndShouldPushViewController:restaurantLVC];
         }
-    } else if (groupType == kSingleRestaurantGroup) {
-        if (self.fpDatasourceDelegate && [self.fpDatasourceDelegate respondsToSelector:@selector(didSelectItemAndShouldPushViewController:)]) {
-            RestaurantCategoryCellData *rData = (RestaurantCategoryCellData *)fpCategoryGroup.items[indexPath.row];
-            RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] initWithNibName:@"RestaurantViewController" bundle:nil andParseObjectId:rData.parseObjectId];
-            [self.fpDatasourceDelegate didSelectItemAndShouldPushViewController:restaurantVC];
-        }
     }
 }
 
-//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    
-//    
-//}
-
+- (void)didSelectRestaurantAndShouldPushRestaurantWithObjectId:(NSString *)objectId {
+    if ((self.fpDatasourceDelegate && [self.fpDatasourceDelegate respondsToSelector:@selector(didSelectItemAndShouldPushViewController:)])) {
+        RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] initWithNibName:@"RestaurantViewController" bundle:nil andParseObjectId:objectId];
+        [self.fpDatasourceDelegate didSelectItemAndShouldPushViewController:restaurantVC];
+    }
+}
 
 @end

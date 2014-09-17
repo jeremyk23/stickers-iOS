@@ -12,7 +12,7 @@
 @protocol FrontPageDataSourceDelegate;
 
 
-@interface FrontPageDataSource : NSObject <FSPhotoGalleryCollectionViewDelegate>
+@interface FrontPageDataSource : NSObject <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, FSPhotoGalleryCollectionViewDelegate>
 
 
 @property (weak) id <FrontPageDataSourceDelegate> fpDatasourceDelegate;

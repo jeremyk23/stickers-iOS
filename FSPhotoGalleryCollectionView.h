@@ -16,7 +16,7 @@
 @property (nonatomic, strong) FSBasicImageSource *fsImageSource;
 @property (weak) id <FSPhotoGalleryCollectionViewDelegate> photoGalleryDelegate;
 
-- (void)setPicturesWithArray:(NSArray *)pictures;
+- (void)setPicturesWithArray:(NSArray *)pictures andObjectId:(NSString *)objectId;
 - (void)setPicturesAndCellTypeWithRestaurant:(PFObject *)restaurant;
 - (void)setCellIdentifier:(NSString *)cellIdentifier withNibNamed:(NSString *)nibName;
 
@@ -24,6 +24,7 @@
 
 @protocol FSPhotoGalleryCollectionViewDelegate <NSObject>
 
-- (void)didSelectRestaurantAndShouldPushViewController:(UIViewController *)viewController;
+- (void)didSelectRestaurantAndShouldPushPhotoViewerView:(UIViewController *)viewController;
+- (void)didSelectRestaurantAndShouldPushRestaurantWithObjectId:(NSString *)objectId;
 
 @end

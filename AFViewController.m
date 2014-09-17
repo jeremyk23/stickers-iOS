@@ -47,6 +47,9 @@
     self.fpDataSource = [[FrontPageDataSource alloc] initAndConstructQuery];
     self.fpDataSource.fpDatasourceDelegate = self;
     
+    self.tableView.delegate = self.fpDataSource;
+    self.tableView.dataSource = self.fpDataSource;
+    
     self.contentOffsetDictionary = [NSMutableDictionary dictionary];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -91,13 +94,14 @@
 
 #pragma mark - UITableViewDelegate Methods
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 245.0f;
 }
 
+/*
 #pragma mark - UICollectionViewDataSource Methods
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     NSLock *mutableArrayLock = [[NSLock alloc] init];
     [mutableArrayLock lock];
     FPCategoryGroup *fpCategoryGroup = self.fpDataSource.elements[collectionView.tag];
@@ -118,6 +122,7 @@
     
     return cell;
 }
+ */
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.fpDataSource collectionView:collectionView configureDidSelectItemAtIndexPath:indexPath];

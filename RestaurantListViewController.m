@@ -41,19 +41,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (!self.restaurants) {
-//        PFQuery *restaurantQuery = [PFQuery queryWithClassName:@"Restaurant"];
-//        [restaurantQuery whereKey:@"restaurants" containedIn:self.categoryData.restaurants];
-//        [restaurantQuery includeKey:@"pictures"];
-//        [restaurantQuery findObjectsInBackgroundWithBlock:^(NSArray *parseRestaurants, NSError *error) {
-//            if (!error) {
-//                self.restaurants = parseRestaurants;
-//                [self.tableView reloadData];
-//            } else {
-//                NSLog(@"Error retrieving restaurants in category: %@", error);
-//            }
-//        }];
-
-        
         PFQuery *categoryQuery = [PFQuery queryWithClassName:@"Category"];
         [categoryQuery includeKey:@"restaurants"];
         [categoryQuery includeKey:@"pictures"];
@@ -67,10 +54,6 @@
         }];
         
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -109,6 +92,10 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 245.0f;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 

@@ -14,7 +14,24 @@
 #import "Helpers.h"
 #import "Constants.h"
 
+@interface FSPhotoGalleryCollectionView ()
+
+
+@property (nonatomic, strong) NSString *objectId;
+
+@end
+
 @implementation FSPhotoGalleryCollectionView
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setCellIdentifier:kPhotoGalleryCollectionViewCellIdentifier withNibNamed:@"RestaurantPhotoGalleryCell"];
+        self.delegate = self;
+        self.dataSource = self;
+    }
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
     self = [super initWithFrame:frame collectionViewLayout:layout];
@@ -27,12 +44,13 @@
 }
 
 - (void)setPicturesAndCellTypeWithRestaurant:(PFObject *)restaurant {
-    
+    self.objectId = restaurant.objectId;
     self.fsImageSource = [[FSBasicImageSource alloc] initWithImages:[Helpers createPhotosArray:restaurant]];
     [self reloadData];
 }
 
-- (void)setPicturesWithArray:(NSArray *)pictures {
+- (void)setPicturesWithArray:(NSArray *)pictures andObjectId:(NSString *)objectId {
+    self.objectId = objectId;
     self.fsImageSource = [[FSBasicImageSource alloc] initWithImages:pictures];
     if (!self.fsImageSource) {
         NSArray *placeholderImage = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"placeholder-photo.png"], nil];
@@ -83,10 +101,14 @@
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.fsImageSource.numberOfImages > 1) {
-        if (self.photoGalleryDelegate && [self.photoGalleryDelegate respondsToSelector:@selector(didSelectRestaurantAndShouldPushViewController:)]) {
+    //If in front page view, just go straight to restaurant page
+    if (self.photoGalleryDelegate && [self.photoGalleryDelegate respondsToSelector:@selector(didSelectRestaurantAndShouldPushRestaurantWithObjectId:)]) {
+        [self.photoGalleryDelegate didSelectRestaurantAndShouldPushRestaurantWithObjectId:self.objectId];
+    } //else launch the photo gallery viewer.
+    else if (self.fsImageSource.numberOfImages > 0) {
+        if (self.photoGalleryDelegate && [self.photoGalleryDelegate respondsToSelector:@selector(didSelectRestaurantAndShouldPushPhotoViewerView:)]) {
             FSImageViewerViewController *photoViewer = [[FSImageViewerViewController alloc] initWithImageSource:self.fsImageSource imageIndex:indexPath.row];
-            [self.photoGalleryDelegate didSelectRestaurantAndShouldPushViewController:photoViewer];
+            [self.photoGalleryDelegate didSelectRestaurantAndShouldPushPhotoViewerView:photoViewer];
         }
     }
 }

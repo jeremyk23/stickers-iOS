@@ -52,7 +52,6 @@
     if (self) {
         self.request = [[ERequestInterface alloc] init];
         self.request.eDelegate = self;
-        self.photoGalleryView.photoGalleryDelegate = self;
         self.displayedReviews = [[NSMutableArray alloc] initWithCapacity:5];
     }
     return self;
@@ -99,7 +98,8 @@
     
     self.waitForTableReload = 0;
     
-    [self.photoGalleryView setPicturesAndCellTypeWithRestaurant:self. restaurant];
+    [self.photoGalleryView setPicturesAndCellTypeWithRestaurant:self.restaurant];
+    self.photoGalleryView.photoGalleryDelegate = self;
     
     CALayer * logoLayer = [self.restaurantLogo layer];
     [logoLayer setMasksToBounds:YES];
@@ -421,7 +421,7 @@
 }
 
 #pragma mark - FSPhotoGalleryCollectionViewDelegate
-- (void)didSelectRestaurantAndShouldPushViewController:(UIViewController *)viewController {
+- (void)didSelectRestaurantAndShouldPushPhotoViewerView:(UIViewController *)viewController {
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
